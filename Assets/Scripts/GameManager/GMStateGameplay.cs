@@ -7,6 +7,6 @@ public class GMStateGameplay : StateBase
 {
     public override void OnStateEnter(object o = null)
     {
-        Debug.Log("Entrou no estado Gameplay");
+        Debug.Log("Entered Gameplay State");
     }
 }
