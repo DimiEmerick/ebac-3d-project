@@ -7,6 +7,7 @@ namespace Ebac.StateMachine
 {
     public class StateMachine<T> where T : System.Enum
     {
+        public T CurrentStateName { get; private set; }
         public Dictionary<T, StateBase> dictionaryState;
         public float timeToStartGame = 1f;
 
@@ -28,6 +29,7 @@ namespace Ebac.StateMachine
         {
             if (_currentState != null) _currentState.OnStateExit();
             _currentState = dictionaryState[state];
+            CurrentStateName = state;
             _currentState.OnStateEnter();
         }
 
