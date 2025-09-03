@@ -6,16 +6,17 @@ using Ebac.StateMachine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 2.5f;
+    public float speed = 2f;
     public float forceJump = 3f;
     public Rigidbody playerRB;
     public Animator playerAnimator;
 
-    private float _currentSpeed;
+    [SerializeField] private float _currentSpeed;
 
     public void Walk()
     {
         Vector3 direction = Vector3.zero;
+
         if(Input.GetKey(KeyCode.W))
             direction += Vector3.forward;
         if (Input.GetKey(KeyCode.A))
@@ -24,9 +25,20 @@ public class Player : MonoBehaviour
             direction += Vector3.back;
         if (Input.GetKey(KeyCode.D))
             direction += Vector3.right;
-        if(direction != Vector3.zero)
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _currentSpeed = speed * 2;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            _currentSpeed = speed;
+        }
+
+        if (direction != Vector3.zero)
         {
             direction = direction.normalized;
+            playerAnimator.speed = _currentSpeed / speed;
             transform.position += direction * _currentSpeed * Time.deltaTime;
         }
     }

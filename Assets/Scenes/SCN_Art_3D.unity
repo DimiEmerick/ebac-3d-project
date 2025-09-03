@@ -4375,6 +4375,7 @@ MonoBehaviour:
   forceJump: 10
   playerRB: {fileID: 905787345}
   playerAnimator: {fileID: 522115891}
+  _currentSpeed: 0
 --- !u!4 &905787343
 Transform:
   m_ObjectHideFlags: 0
