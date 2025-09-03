@@ -18,8 +18,6 @@ namespace Ebac.StateMachine
             get { return _currentState; }
         }
 
-
-
         public void Init()
         {
             dictionaryState = new Dictionary<T, StateBase>();
@@ -27,7 +25,10 @@ namespace Ebac.StateMachine
 
         public void SwitchState(T state)
         {
-            if (_currentState != null) _currentState.OnStateExit();
+            if (CurrentStateName != null && CurrentStateName.Equals(state))
+                return;
+            if (_currentState != null)
+                _currentState.OnStateExit();
             _currentState = dictionaryState[state];
             CurrentStateName = state;
             _currentState.OnStateEnter();

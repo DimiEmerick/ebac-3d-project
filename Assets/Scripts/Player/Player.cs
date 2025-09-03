@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Ebac.StateMachine;
 
 public class Player : MonoBehaviour
 {
     public float speed = 2.5f;
     public float forceJump = 3f;
     public Rigidbody playerRB;
+    public Animator playerAnimator;
 
     private float _currentSpeed;
 
@@ -31,27 +33,11 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
             playerRB.velocity = Vector3.up * forceJump;
-        }
     }
 
     private void Start()
     {
         _currentSpeed = speed;
-    }
-
-    private void Update()
-    {
-        if(GameManager.Instance != null && GameManager.Instance.stateMachine.CurrentStateName == GameManager.GameStates.GAMEPLAY)
-        {
-            Walk();
-            Jump();
-        }
-        else
-        {
-            playerRB.velocity = Vector3.zero;
-        }
     }
 }

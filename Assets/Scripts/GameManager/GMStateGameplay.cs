@@ -9,4 +9,9 @@ public class GMStateGameplay : StateBase
     {
         Debug.Log("Entered Gameplay State");
     }
+
+    public override void OnStateStay()
+    {
+        //
+    }
 }
