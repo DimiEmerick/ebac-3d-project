@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
             direction = direction.normalized;
             playerAnimator.speed = _currentSpeed / speed;
             transform.position += direction * _currentSpeed * Time.deltaTime;
-        }
+        } 
     }
 
     public void Jump()
