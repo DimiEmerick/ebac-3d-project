@@ -6,38 +6,74 @@ using Ebac.StateMachine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 2.5f;
+    public float speed = 2f;
     public float forceJump = 3f;
+    public float turnSpeed = 250f;
     public Rigidbody playerRB;
     public Animator playerAnimator;
 
     private float _currentSpeed;
 
+    [Header("Ground Check")]
+    public float groundDistance = .25f;        // raio do check
+    public Transform groundCheck;              // um vazio posicionado no pé do personagem
+    public LayerMask groundMask;               // layer que representa o chão
+    
+    private bool _isGrounded;
+
     public void Walk()
     {
+        Vector3 camForward = Camera.main.transform.forward;
+        camForward.y = 0f;
+        camForward.Normalize();
+        Vector3 camRight = Camera.main.transform.right;
+        camRight.y = 0f;
+        camRight.Normalize();
+
         Vector3 direction = Vector3.zero;
-        if(Input.GetKey(KeyCode.W))
-            direction += Vector3.forward;
+
+        if (Input.GetKey(KeyCode.W))
+            direction += camForward;
         if (Input.GetKey(KeyCode.A))
-            direction += Vector3.left;
+            direction -= camRight;
         if (Input.GetKey(KeyCode.S))
-            direction += Vector3.back;
+            direction -= camForward;
         if (Input.GetKey(KeyCode.D))
-            direction += Vector3.right;
-        if(direction != Vector3.zero)
+            direction += camRight;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _currentSpeed = speed * 2;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            _currentSpeed = speed;
+        }
+
+        if (direction != Vector3.zero)
         {
             direction = direction.normalized;
-            transform.position += direction * _currentSpeed * Time.deltaTime;
-        }
+            playerAnimator.speed = _currentSpeed / speed;
+            transform.position += _currentSpeed * Time.deltaTime * direction;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+        } 
     }
 
     public void Jump()
     {
+        if(_isGrounded)
             playerRB.velocity = Vector3.up * forceJump;
     }
 
     private void Start()
     {
         _currentSpeed = speed;
+    }
+
+    private void Update()
+    {
+        // posiciona uma esfera invisível que checa se o personagem está tocando o chão
+        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); 
     }
 }

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
 using Ebac.StateMachine;
+using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
+    public TMP_Text FSMTutorial;
     public enum GameStates
     {
         INTRO,
@@ -44,7 +46,12 @@ public class GameManager : Singleton<GameManager>
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            stateMachine.SwitchState(GameStates.GAMEPLAY);
+            FSMTutorial.enabled = false;
+            if (GameManager.Instance != null && GameManager.Instance.stateMachine.CurrentStateName == GameManager.GameStates.INTRO)
+                stateMachine.SwitchState(GameStates.GAMEPLAY);
+            else if (GameManager.Instance != null && GameManager.Instance.stateMachine.CurrentStateName == GameManager.GameStates.GAMEPLAY)
+                stateMachine.SwitchState(GameStates.INTRO);
+
         }
     }
 }
