@@ -13,7 +13,7 @@ public class GunShootAngle : GunBase
         {
             var projectile = Instantiate(prefabProjectile);
             projectile.transform.position = positionToShoot.position;
-            projectile.transform.rotation = positionToShoot.rotation;
+            projectile.transform.eulerAngles = Vector3.zero + Vector3.up * (i % 2 == 0 ? angle : -angle);
         }
         
     }
