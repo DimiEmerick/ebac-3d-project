@@ -44,16 +44,17 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             _currentSpeed = speed * 2;
+            playerAnimator.speed = 1.5f;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _currentSpeed = speed;
+            playerAnimator.speed = 1;
         }
 
         if (direction != Vector3.zero)
         {
             direction = direction.normalized;
-            playerAnimator.speed = _currentSpeed / speed;
             transform.position += _currentSpeed * Time.deltaTime * direction;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _currentSpeed = speed;
+        playerAnimator.speed = 1;
     }
 
     private void Update()
