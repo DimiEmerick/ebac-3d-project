@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GunBase : MonoBehaviour
 {
-    public float timeBetweenShot = .3f;
     public ProjectileBase prefabProjectile;
     public Transform positionToShoot;
     public KeyCode keyCode = KeyCode.F;
+    public float timeBetweenShot = .3f;
+    public float speed = 50f;
 
     private Coroutine _currentCoroutine;
 
@@ -25,6 +26,7 @@ public class GunBase : MonoBehaviour
         var projectile = Instantiate(prefabProjectile);
         projectile.transform.position = positionToShoot.position;
         projectile.transform.rotation = positionToShoot.rotation;
+        projectile.speed = speed;
     }
 
     public void StartShoot()

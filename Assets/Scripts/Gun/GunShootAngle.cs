@@ -9,12 +9,16 @@ public class GunShootAngle : GunBase
 
     public override void Shoot()
     {
+        int mult = 0;
         for(int i = 0; i < amountPerShot; i++)
         {
-            var projectile = Instantiate(prefabProjectile);
-            projectile.transform.position = positionToShoot.position;
-            projectile.transform.eulerAngles = Vector3.zero + Vector3.up * (i % 2 == 0 ? angle : -angle);
+            if (i % 2 == 0) mult++;
+            var projectile = Instantiate(prefabProjectile, positionToShoot);
+            projectile.transform.localPosition = Vector3.zero;
+            projectile.transform.localEulerAngles = Vector3.zero + Vector3.up * (i % 2 == 0 ? angle : -angle) * mult;
+            projectile.speed = speed;
+            projectile.transform.parent = null;
+            projectile.transform.localScale = Vector3.one / mult;
         }
-        
     }
 }
