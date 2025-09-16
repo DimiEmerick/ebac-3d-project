@@ -14,15 +14,23 @@ public class PlayerHabilityShoot : PlayerHabilityBase
     protected override void Init()
     {
         base.Init();
-        CreateGun(gunBase1);
         inputs.Gameplay.Shoot.performed += ctx => StartShoot();
         inputs.Gameplay.Shoot.performed += ctx => CancelShoot();
+        inputs.Gameplay.ChangeGun1.performed += ctx => DestroyGun();
+        inputs.Gameplay.ChangeGun1.performed += ctx => CreateGun(gunBase1);
+        inputs.Gameplay.ChangeGun2.performed += ctx => DestroyGun();
+        inputs.Gameplay.ChangeGun2.performed += ctx => CreateGun(gunBase2);
     }
 
     private void CreateGun(GunBase g)
     {
         _currentGun = Instantiate(g, gunPosition);
         _currentGun.transform.localPosition = _currentGun.transform.localEulerAngles = Vector3.zero;
+    }
+
+    private void DestroyGun()
+    {
+        Destroy(_currentGun);
     }
 
     private void StartShoot()
