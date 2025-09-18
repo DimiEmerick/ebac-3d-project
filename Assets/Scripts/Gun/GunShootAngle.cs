@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunShootAngle : GunBase
 {
     public int amountPerShot = 4;
+    public float gunDamage = 2f;
     public float angle = 15f;
 
     public override void Shoot()
@@ -19,6 +20,8 @@ public class GunShootAngle : GunBase
             projectile.speed = speed;
             projectile.transform.parent = null;
             projectile.transform.localScale = Vector3.one / mult;
+            projectile.damageAmount = gunDamage;
+            projectile.damageAmount /= mult;
         }
     }
 }
