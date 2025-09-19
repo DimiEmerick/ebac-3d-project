@@ -22,28 +22,36 @@ namespace Enemy
 
         [SerializeField] private AnimationBase _animationBase;
 
+
+        #region MÉTODOS UNITY
         private void Awake()
         {
             Init();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                OnDamage(5f);
+            }
+        }
+        #endregion
+
+        #region MÉTODOS PROTECTED VIRTUAL
         protected virtual void Init()
         {
             ResetLife();
-            if(startWithBornAnimation)
+            if (startWithBornAnimation)
                 BornAnimation();
         }
-        protected void ResetLife()
+
+        protected virtual void Kill()
         {
-            _currentLife = startLife;
+            OnKill();
         }
 
-        protected virtual void Kill() 
-        {
-            OnKill(); 
-        }
-
-        protected virtual void OnKill() 
+        protected virtual void OnKill()
         {
             if (enemyCollider != null) enemyCollider.enabled = false;
             PlayAnimationByTrigger(AnimationType.DEATH);
@@ -55,11 +63,20 @@ namespace Enemy
             if (flashColor != null) flashColor.Flash();
             if (enemyParticleSystem != null) enemyParticleSystem.Emit(15);
             _currentLife -= f;
-            if(_currentLife <= 0)
+            if (_currentLife <= 0)
             {
                 Kill();
             }
         }
+        #endregion
+
+        #region MÉTODOS PÚBLICOS
+        public void Damage(float damage)
+        {
+            Debug.Log("Damage");
+            OnDamage(damage);
+        }
+        #endregion
 
         #region ANIMATION
         private void BornAnimation()
@@ -73,18 +90,9 @@ namespace Enemy
         }
         #endregion
 
-        private void Update()
+        protected void ResetLife()
         {
-            if(Input.GetKeyDown(KeyCode.T))
-            {
-                OnDamage(5f);
-            }
-        }
-
-        public void Damage(float damage)
-        {
-            Debug.Log("Damage");
-            OnDamage(damage);
+            _currentLife = startLife;
         }
     }
 }
