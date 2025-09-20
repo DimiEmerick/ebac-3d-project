@@ -39,7 +39,7 @@ public class FSM_Player : Singleton<FSM_Player>
                 stateMachine.SwitchState(PlayerStates.PLAYER_WALK);
             else
                 stateMachine.SwitchState(PlayerStates.PLAYER_IDLE);
-            if(Input.GetKeyDown(KeyCode.Space)) 
+            if(Input.GetKeyDown(KeyCode.Space) && player.isGrounded) 
                 stateMachine.SwitchState(PlayerStates.PLAYER_JUMP);
         }
     }

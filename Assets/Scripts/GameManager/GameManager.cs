@@ -4,6 +4,7 @@ using UnityEngine;
 using Ebac.Core.Singleton;
 using Ebac.StateMachine;
 using TMPro;
+using DG.Tweening;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -22,6 +23,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         Init();
+        DOTween.SetTweensCapacity(1000, 1000);
     }
 
     private void Update()

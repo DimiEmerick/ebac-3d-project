@@ -6,20 +6,20 @@ using Ebac.StateMachine;
 
 public class Player : MonoBehaviour
 {
+    public Rigidbody playerRB;
+    public Animator playerAnimator;
     public float speed = 2f;
     public float forceJump = 3f;
     public float turnSpeed = 250f;
-    public Rigidbody playerRB;
-    public Animator playerAnimator;
+    public bool isGrounded;
 
     private float _currentSpeed;
 
     [Header("Ground Check")]
-    public float groundDistance = .25f;        // raio do check
     public Transform groundCheck;              // um vazio posicionado no pé do personagem
+    public float groundDistance = .25f;        // raio do check
     public LayerMask groundMask;               // layer que representa o chão
     
-    private bool _isGrounded;
 
     public void Walk()
     {
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if(_isGrounded)
+        if(isGrounded)
             playerRB.velocity = Vector3.up * forceJump;
     }
 
@@ -76,6 +76,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         // posiciona uma esfera invisível que checa se o personagem está tocando o chão
-        _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); 
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); 
     }
 }

@@ -54,6 +54,7 @@ namespace Enemy
         protected virtual void OnKill()
         {
             if (enemyCollider != null) enemyCollider.enabled = false;
+            enemyParticleSystem.Emit(50);
             PlayAnimationByTrigger(AnimationType.DEATH);
             Destroy(gameObject, 1.45f);
         }
