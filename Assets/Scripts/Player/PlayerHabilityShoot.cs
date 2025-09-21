@@ -14,6 +14,7 @@ public class PlayerHabilityShoot : PlayerHabilityBase
     protected override void Init()
     {
         base.Init();
+        CreateGun(gunBase1);
         inputs.Gameplay.Shoot.performed += ctx => StartShoot();
         inputs.Gameplay.Shoot.performed += ctx => CancelShoot();
         inputs.Gameplay.ChangeGun1.performed += ctx => DestroyGun();
