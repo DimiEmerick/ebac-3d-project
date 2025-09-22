@@ -28,14 +28,6 @@ namespace Enemy
         {
             Init();
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                OnDamage(5f);
-            }
-        }
         #endregion
 
         #region MÉTODOS PROTECTED VIRTUAL
