@@ -22,7 +22,13 @@ public class ProjectileBase : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var damageable = collision.transform.GetComponent<IDamageable>();
-        if (damageable != null) damageable.Damage(damageAmount);
+        if (damageable != null)
+        {
+            Vector3 direction = collision.transform.position - transform.position;
+            direction = -direction.normalized;
+            direction.y = 0;
+            damageable.Damage(damageAmount, direction);
+        }
         if (!collision.gameObject.CompareTag("Projectile")) Destroy(gameObject);
     }
 }

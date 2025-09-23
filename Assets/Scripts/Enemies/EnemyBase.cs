@@ -55,6 +55,7 @@ namespace Enemy
         {
             if (flashColor != null) flashColor.Flash();
             if (enemyParticleSystem != null) enemyParticleSystem.Emit(15);
+            transform.position -= transform.forward;
             _currentLife -= f;
             if (_currentLife <= 0)
             {
@@ -68,6 +69,11 @@ namespace Enemy
         {
             Debug.Log("Damage");
             OnDamage(damage);
+        }
+        public void Damage(float damage, Vector3 direction)
+        {
+            OnDamage(damage);
+            transform.DOMove(transform.position - direction, .1f);
         }
         #endregion
 

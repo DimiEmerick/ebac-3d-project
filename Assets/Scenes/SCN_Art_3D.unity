@@ -1582,6 +1582,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 871206407}
     m_Modifications:
+    - target: {fileID: 4152284731838658716, guid: 2891320480a4bb648b54f9c8ae2e3a5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152284731838658716, guid: 2891320480a4bb648b54f9c8ae2e3a5b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152284731838658716, guid: 2891320480a4bb648b54f9c8ae2e3a5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152284731838658716, guid: 2891320480a4bb648b54f9c8ae2e3a5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152284731838658716, guid: 2891320480a4bb648b54f9c8ae2e3a5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4152284732125463920, guid: 2891320480a4bb648b54f9c8ae2e3a5b, type: 3}
       propertyPath: m_Name
       value: PFB_EnemyPurpleEBAC
@@ -14436,7 +14456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4152284732125463922, guid: 09e6820b22f541a49ae2982126e59af5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.87
+      value: -2.75
       objectReference: {fileID: 0}
     - target: {fileID: 4152284732125463922, guid: 09e6820b22f541a49ae2982126e59af5, type: 3}
       propertyPath: m_LocalPosition.z
