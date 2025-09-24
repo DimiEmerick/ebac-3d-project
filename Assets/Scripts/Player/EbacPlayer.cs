@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EbacPlayer : MonoBehaviour
+public class EbacPlayer : MonoBehaviour, IDamageable
 {
     public Animator playerAnimator;
     public CharacterController characterController;
@@ -16,7 +16,22 @@ public class EbacPlayer : MonoBehaviour
     public KeyCode keyRun = KeyCode.LeftShift;
     public float speedRun = 1.5f;
 
+    [Header("Flash")]
+    public List<FlashColor> flashColors;
+
     private float _vSpeed = 0f;
+
+    #region LIFE
+    public void Damage(float damage)
+    {
+        flashColors.ForEach(i => i.Flash());
+    }
+
+    public void Damage(float damage, Vector3 direction)
+    {
+        
+    }
+    #endregion
 
     void Update()
     {

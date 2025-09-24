@@ -28,6 +28,15 @@ namespace Enemy
         {
             Init();
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            EbacPlayer p = collision.transform.GetComponent<EbacPlayer>();
+            if (p != null)
+            {
+                p.Damage(1);
+            }
+        }
         #endregion
 
         #region MÉTODOS PROTECTED VIRTUAL

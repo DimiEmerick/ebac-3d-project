@@ -2527,6 +2527,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8043139984699745673, guid: 6a85956ddea0a304da62a369edd2c2fa, type: 3}
   m_PrefabInstance: {fileID: 480208794}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &493565121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8780113881676022535, guid: fd1fa4a91ea923645bfd93f285dcf241, type: 3}
+  m_PrefabInstance: {fileID: 455269487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &493565123 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8517986018976716636, guid: fd1fa4a91ea923645bfd93f285dcf241, type: 3}
+  m_PrefabInstance: {fileID: 455269487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &493565124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493565121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cd890c2e42a5c4f9d82a17a27658e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 493565123}
+  color: {r: 1, g: 0, b: 0, a: 1}
+  duration: 0.1
 --- !u!1001 &500120254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6338,6 +6364,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7703423336758522442, guid: 9543c8747ede5a84589ebcb498fb4515, type: 3}
   m_PrefabInstance: {fileID: 1000365522}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1011242267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6042633999524273919, guid: fd1fa4a91ea923645bfd93f285dcf241, type: 3}
+  m_PrefabInstance: {fileID: 455269487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1011242269 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1691330199028169570, guid: fd1fa4a91ea923645bfd93f285dcf241, type: 3}
+  m_PrefabInstance: {fileID: 455269487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1011242270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011242267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cd890c2e42a5c4f9d82a17a27658e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 0}
+  skinnedMeshRenderer: {fileID: 1011242269}
+  color: {r: 1, g: 0, b: 0, a: 1}
+  duration: 0.1
 --- !u!1001 &1022147207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8539,6 +8591,7 @@ GameObject:
   - component: {fileID: 1380954364}
   - component: {fileID: 1380954363}
   - component: {fileID: 1380954366}
+  - component: {fileID: 1380954367}
   m_Layer: 0
   m_Name: EbacPlayer
   m_TagString: Untagged
@@ -8558,7 +8611,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 3
-  m_Radius: 0.75
+  m_Radius: 0.1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -8585,6 +8638,9 @@ MonoBehaviour:
   jumpKeyCode: 32
   keyRun: 304
   speedRun: 1.5
+  flashColors:
+  - {fileID: 493565124}
+  - {fileID: 1011242270}
 --- !u!4 &1380954365
 Transform:
   m_ObjectHideFlags: 0
@@ -8616,6 +8672,20 @@ MonoBehaviour:
   gunBase1: {fileID: 9134309031689178214, guid: 0a407c9e79008a0459f3d7ef1dbb495c, type: 3}
   gunBase2: {fileID: 3854064419882761416, guid: 30b3b37fc11ac5f49a48e40b0125f23d, type: 3}
   gunPosition: {fileID: 1323725469}
+--- !u!136 &1380954367
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380954362}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.1137352
+  m_Height: 3.8261418
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.7513173, z: 0.009666443}
 --- !u!1 &1385158819
 GameObject:
   m_ObjectHideFlags: 3
