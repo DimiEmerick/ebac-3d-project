@@ -29,7 +29,7 @@ public class EbacPlayer : MonoBehaviour, IDamageable
 
     public void Damage(float damage, Vector3 direction)
     {
-        
+        Damage(damage);
     }
     #endregion
 

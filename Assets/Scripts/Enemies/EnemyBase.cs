@@ -12,13 +12,15 @@ namespace Enemy
         public FlashColor flashColor;
         public ParticleSystem enemyParticleSystem;
         public float startLife = 10f;
+        public bool lookAtPlayer = false;
 
         [SerializeField] private float _currentLife;
+        private EbacPlayer _player;
 
         [Header("Start Animation")]
+        public bool startWithBornAnimation = true;
         public float startAnimationDuration = .2f;
         public Ease startAnimationEase = Ease.OutBack;
-        public bool startWithBornAnimation = true;
 
         [SerializeField] private AnimationBase _animationBase;
 
@@ -29,12 +31,25 @@ namespace Enemy
             Init();
         }
 
+        private void Start()
+        {
+            _player = GameObject.FindObjectOfType<EbacPlayer>();
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             EbacPlayer p = collision.transform.GetComponent<EbacPlayer>();
             if (p != null)
             {
                 p.Damage(1);
+            }
+        }
+
+        public virtual void Update()
+        {
+            if(lookAtPlayer)
+            {
+                transform.LookAt(_player.transform.position);
             }
         }
         #endregion
