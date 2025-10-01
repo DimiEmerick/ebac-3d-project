@@ -6,6 +6,7 @@ using UnityEngine;
 public class HealthBase : MonoBehaviour
 {
     public float startLife = 10f;
+    public bool destroyOnKill = false;
 
     public Action<HealthBase> OnDamage;
     public Action<HealthBase> OnKill;
@@ -24,16 +25,25 @@ public class HealthBase : MonoBehaviour
 
     protected virtual void Kill()
     {
-        Destroy(gameObject, 1.45f);
+        if(destroyOnKill)
+            Destroy(gameObject, 1.45f);
+        OnKill?.Invoke(this);
     }
 
-    public void OnDamage(float f)
+    [NaughtyAttributes.Button]
+    public void Damage()
+    {
+        Damage(5);
+    }
+
+    public void Damage(float f)
     {
         _currentLife -= f;
         if(_currentLife <= 0)
         {
             Kill();
         }
+        OnDamage?.Invoke(this);
     }
 
     public void Init()

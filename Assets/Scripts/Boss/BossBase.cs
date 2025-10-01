@@ -12,7 +12,8 @@ namespace Boss
         INIT,
         IDLE,
         WALK,
-        ATTACK
+        ATTACK,
+        DEATH
     }
     public class BossBase : MonoBehaviour
     {
@@ -28,11 +29,16 @@ namespace Boss
         public int attackAmount = 5;
         public float timeBetweenAttacks = .2f;
 
+        public HealthBase healthBase;
+        public EbacPlayer _player;
+
         private StateMachine<BossAction> _stateMachine;
 
         private void Awake()
         {
             Init();
+            healthBase.OnKill += OnBossKill;
+            _player = GameObject.FindObjectOfType<EbacPlayer>();
         }
 
         private void Init()
@@ -42,6 +48,13 @@ namespace Boss
             _stateMachine.RegisterStates(BossAction.INIT, new BossStateInit());
             _stateMachine.RegisterStates(BossAction.WALK, new BossStateWalk());
             _stateMachine.RegisterStates(BossAction.ATTACK, new BossStateAttack());
+            _stateMachine.RegisterStates(BossAction.DEATH, new BossStateDeath());
+            SwitchState(BossAction.INIT);
+        }
+
+        private void OnBossKill(HealthBase h)
+        {
+            SwitchState(BossAction.DEATH);
         }
 
         #region ATTACK
@@ -57,6 +70,7 @@ namespace Boss
             {
                 attacks++;
                 transform.DOScale(1.1f, .1f).SetLoops(2, LoopType.Yoyo);
+                transform.LookAt(_player.transform.position);
                 yield return new WaitForSeconds(timeBetweenAttacks);
             }
             endCallback?.Invoke();
@@ -74,6 +88,7 @@ namespace Boss
             while(Vector3.Distance(transform.position, t.position) > 1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, t.position, Time.deltaTime * speed);
+                transform.LookAt(t.position);
                 yield return new WaitForEndOfFrame();
             }
             onArrive?.Invoke();
@@ -84,6 +99,7 @@ namespace Boss
         public void StartInitAnimation()
         {
             transform.DOScale(0, startAnimationDuration).SetEase(startAnimationEase).From();
+            SwitchState(BossAction.WALK);
         }
         #endregion
 

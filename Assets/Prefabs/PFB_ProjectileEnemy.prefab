@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
-  timeToDestroy: 2
+  timeToDestroy: 0.75
   speed: 50
   tagToHit:
   - Player
