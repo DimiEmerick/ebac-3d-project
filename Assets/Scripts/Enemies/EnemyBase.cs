@@ -79,7 +79,6 @@ namespace Enemy
         {
             if (flashColor != null) flashColor.Flash();
             if (enemyParticleSystem != null) enemyParticleSystem.Emit(15);
-            transform.position -= transform.forward;
             _currentLife -= f;
             if (_currentLife <= 0)
             {

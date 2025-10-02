@@ -29,6 +29,7 @@ namespace Boss
         {
             base.OnStateEnter(objs);
             boss.GoToRandomPoint(OnArrive);
+            boss.animationBase.PlayAnimationByTrigger(Animation.AnimationType.RUN);
         }
 
         private void OnArrive()
@@ -48,10 +49,12 @@ namespace Boss
         {
             base.OnStateEnter(objs);
             boss.StartAttack(EndAttacks);
+            boss.animationBase.PlayAnimationByTrigger(Animation.AnimationType.ATTACK);
         }
 
         private void EndAttacks()
         {
+            boss.gunBase.StopShoot();
             boss.SwitchState(BossAction.WALK);
         }
 
@@ -67,7 +70,8 @@ namespace Boss
         public override void OnStateEnter(params object[] objs)
         {
             base.OnStateEnter(objs);
-            boss.transform.localScale = Vector3.one * .2f;
+            boss.StopAllCoroutines();
+            boss.animationBase.PlayAnimationByTrigger(Animation.AnimationType.DEATH);
         }
     }
 }
