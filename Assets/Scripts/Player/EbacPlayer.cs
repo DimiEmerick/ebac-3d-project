@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EbacPlayer : MonoBehaviour, IDamageable
+public class EbacPlayer : MonoBehaviour//, IDamageable
 {
     public Animator playerAnimator;
     public CharacterController characterController;
@@ -18,18 +18,30 @@ public class EbacPlayer : MonoBehaviour, IDamageable
 
     [Header("Flash")]
     public List<FlashColor> flashColors;
+    public HealthBase healthBase;
 
     private float _vSpeed = 0f;
 
+    private void OnValidate()
+    {
+        if (healthBase == null) healthBase = GetComponent<HealthBase>();
+    }
+
+    private void Awake()
+    {
+        OnValidate();
+        healthBase.OnDamage += Damage;
+    }
+
     #region LIFE
-    public void Damage(float damage)
+    public void Damage(HealthBase h)
     {
         flashColors.ForEach(i => i.Flash());
     }
 
     public void Damage(float damage, Vector3 direction)
     {
-        Damage(damage);
+        // Damage(damage);
     }
     #endregion
 

@@ -39,8 +39,14 @@ namespace Boss
 
         private StateMachine<BossAction> _stateMachine;
 
+        private void OnValidate()
+        {
+            if (healthBase == null) healthBase = GetComponent<HealthBase>();
+        }
+
         private void Awake()
         {
+            OnValidate();
             Init();
             healthBase.OnKill += OnBossKill;
             player = GameObject.FindObjectOfType<EbacPlayer>();
@@ -101,7 +107,7 @@ namespace Boss
             EbacPlayer p = collision.transform.GetComponent<EbacPlayer>();
             if (p != null)
             {
-                p.Damage(1);
+                p.healthBase.Damage(1);
             }
         }
         #endregion
