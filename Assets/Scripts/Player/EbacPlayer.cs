@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EbacPlayer : MonoBehaviour//, IDamageable
 {
+    public List<Collider> colliders;
     public Animator playerAnimator;
     public CharacterController characterController;
     public float speed = 1f;
@@ -18,9 +19,13 @@ public class EbacPlayer : MonoBehaviour//, IDamageable
 
     [Header("Flash")]
     public List<FlashColor> flashColors;
+
+    [Header("Life")]
     public HealthBase healthBase;
+    public UIFillUpdater uiGunUpdater;
 
     private float _vSpeed = 0f;
+    private bool _alive = true;
 
     private void OnValidate()
     {
@@ -31,9 +36,20 @@ public class EbacPlayer : MonoBehaviour//, IDamageable
     {
         OnValidate();
         healthBase.OnDamage += Damage;
+        healthBase.OnKill += OnKill;
     }
 
     #region LIFE
+    private void OnKill(HealthBase h)
+    {
+        if(_alive)
+        {
+            _alive = false;
+            playerAnimator.SetTrigger("Death");
+            colliders.ForEach(i => i.enabled = false);
+        }
+    }
+
     public void Damage(HealthBase h)
     {
         flashColors.ForEach(i => i.Flash());

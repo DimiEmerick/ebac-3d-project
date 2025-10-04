@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HealthBase : MonoBehaviour, IDamageable
 {
+    public UIFillUpdater uiGunUpdater;
+
     public float startLife = 10f;
     public bool destroyOnKill = false;
 
@@ -43,6 +45,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         {
             Kill();
         }
+        UpdateUI();
         OnDamage?.Invoke(this);
     }
 
@@ -54,5 +57,13 @@ public class HealthBase : MonoBehaviour, IDamageable
     public void Damage(float damage, Vector3 direction)
     {
         Damage(damage);
+    }
+
+    private void UpdateUI()
+    {
+        if (uiGunUpdater != null)
+        {
+            uiGunUpdater.UpdateValue((float) _currentLife / startLife);
+        }
     }
 }
