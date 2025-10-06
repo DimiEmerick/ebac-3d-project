@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealthBase : MonoBehaviour, IDamageable
 {
-    public UIFillUpdater uiGunUpdater;
+    public List<UIFillUpdater> uiFillUpdaters;
 
     public float startLife = 10f;
     public bool destroyOnKill = false;
@@ -61,9 +61,9 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     private void UpdateUI()
     {
-        if (uiGunUpdater != null)
+        if (uiFillUpdaters != null)
         {
-            uiGunUpdater.UpdateValue((float) _currentLife / startLife);
+            uiFillUpdaters.ForEach(i => i.UpdateValue((float) _currentLife / startLife));
         }
     }
 }
