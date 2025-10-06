@@ -48,7 +48,7 @@ namespace Boss
         {
             OnValidate();
             Init();
-            healthBase.OnKill += OnBossKill;
+            if(healthBase != null) healthBase.OnKill += OnBossKill;
             player = GameObject.FindObjectOfType<EbacPlayer>();
         }
 
