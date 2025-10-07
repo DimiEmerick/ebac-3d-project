@@ -47,7 +47,17 @@ public class EbacPlayer : MonoBehaviour//, IDamageable
             _alive = false;
             playerAnimator.SetTrigger("Death");
             colliders.ForEach(i => i.enabled = false);
+            Invoke(nameof(Revive), 3f);
         }
+    }
+
+    private void Revive()
+    {
+        _alive = true;
+        healthBase.ResetLife();
+        playerAnimator.SetTrigger("Revive");
+        colliders.ForEach(i => i.enabled = true);
+        Respawn();
     }
 
     public void Damage(HealthBase h)
@@ -97,5 +107,14 @@ public class EbacPlayer : MonoBehaviour//, IDamageable
             }
         }
         characterController.Move(speedVector * Time.deltaTime);
+    }
+
+    [NaughtyAttributes.Button]
+    public void Respawn()
+    {
+        if(CheckpointManager.Instance.HasCheckpoint()) 
+        {
+            transform.position = CheckpointManager.Instance.GetPositionFromLastCheckpoint();
+        }
     }
 }
