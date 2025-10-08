@@ -22,7 +22,7 @@ public class EbacPlayer : MonoBehaviour//, IDamageable
 
     [Header("Life")]
     public HealthBase healthBase;
-    public UIFillUpdater uiGunUpdater;
+    public List<UIFillUpdater> uiGunUpdaters;
 
     private float _vSpeed = 0f;
     private bool _alive = true;

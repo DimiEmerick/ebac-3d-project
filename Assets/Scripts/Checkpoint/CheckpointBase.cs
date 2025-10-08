@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class CheckpointBase : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
+    public TextMeshProUGUI checkpointText;
     public int key = 01;
 
     private bool _checkpointActive = false;
@@ -24,7 +26,7 @@ public class CheckpointBase : MonoBehaviour
     {
         TurnOn();
         SaveCheckpoint();
-
+        StartCoroutine(TextCheckpoint());
     }
 
     [NaughtyAttributes.Button]
@@ -44,5 +46,12 @@ public class CheckpointBase : MonoBehaviour
             PlayerPrefs.SetInt(_checkpointKey, key); */
         CheckpointManager.Instance.SaveCheckpoint(key);
         _checkpointActive = true;
+    }
+
+    IEnumerator TextCheckpoint()
+    {
+        checkpointText.text = "Checkpoint Activated";
+        yield return new WaitForSeconds(2.5f);
+        checkpointText.text = "";
     }
 }
