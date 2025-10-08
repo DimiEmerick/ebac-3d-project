@@ -56,8 +56,13 @@ public class EbacPlayer : MonoBehaviour//, IDamageable
         _alive = true;
         healthBase.ResetLife();
         playerAnimator.SetTrigger("Revive");
-        colliders.ForEach(i => i.enabled = true);
         Respawn();
+        Invoke(nameof(TurnOnColliders), .1f);
+    }
+
+    private void TurnOnColliders()
+    {
+        colliders.ForEach(i => i.enabled = true);
     }
 
     public void Damage(HealthBase h)
