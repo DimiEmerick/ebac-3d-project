@@ -62,8 +62,9 @@ public class EnemyMove : EnemyBase
         _positions = new Vector3[0];
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
         MoveInLine();
     }
 }

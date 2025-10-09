@@ -6,7 +6,7 @@ using Ebac.StateMachine;
 public class FSM_Player_Idle : StateBase
 {
     public Player player;
-    public override void OnStateEnter(object o = null)
+    public override void OnStateEnter(params object[] objs)
     {
         Debug.Log("Entered Idle state.");
         FSM_Player.Instance.player.playerAnimator.SetBool("Idle", true);

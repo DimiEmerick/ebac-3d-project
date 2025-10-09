@@ -5,7 +5,7 @@ using Ebac.StateMachine;
 
 public class GMStateIntro : StateBase
 {
-    public override void OnStateEnter(object o = null)
+    public override void OnStateEnter(params object[] objs)
     {
         Debug.Log("Entered Intro State");
     }

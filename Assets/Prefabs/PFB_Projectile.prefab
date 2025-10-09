@@ -143,6 +143,8 @@ MonoBehaviour:
   damageAmount: 1
   timeToDestroy: 2
   speed: 50
+  tagToHit:
+  - Enemy
   direction: {x: 0, y: 0, z: 0}
 --- !u!54 &7160774252067913120
 Rigidbody:
