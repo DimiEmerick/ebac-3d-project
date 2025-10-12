@@ -9,9 +9,9 @@ public class GunShootLimit : GunBase
     public EbacPlayer player;
     public float maxShots = 5f;
     public float timeToRecharge = 1f;
+    public bool recharging = false;
 
     private float _currentShots;
-    private bool _recharging = false;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class GunShootLimit : GunBase
 
     protected override IEnumerator ShootCoroutine()
     {
-        if (_recharging) yield break;
+        if (recharging) yield break;
         while(true)
         {
             if(_currentShots < maxShots)
@@ -46,7 +46,7 @@ public class GunShootLimit : GunBase
 
     private void StartRecharge()
     {
-        _recharging = true;
+        recharging = true;
         StartCoroutine(RechargeCoroutine());
     }
 
@@ -61,7 +61,7 @@ public class GunShootLimit : GunBase
             yield return new WaitForEndOfFrame();
         }
         _currentShots = 0;
-        _recharging = false;
+        recharging = false;
     }
 
     private void UpdateUI()
