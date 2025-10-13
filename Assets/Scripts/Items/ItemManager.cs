@@ -15,8 +15,6 @@ namespace Itens
     public class ItemManager : Singleton<ItemManager>
     {
         public List<ItemSetup> itemSetups;
-        public SOInt coins;
-        public TextMeshProUGUI uiTextCoins;
 
         private void Awake()
         {
@@ -29,21 +27,36 @@ namespace Itens
 
         private void Reset()
         {
-            coins.value = 0;
-            UpdateUI();
+            foreach(var i in itemSetups)
+            {
+                i.soInt.value = 0;
+            }
         }
 
-        public void AddCoins(int amountC = 1)
+        public void RemoveByType(ItemType itemType, int amount = -1)
         {
-            coins.value += amountC;
-            UpdateUI();
+            if (amount > 0) return;
+            var item = itemSetups.Find(i => i.itemType == itemType);
+            item.soInt.value -= amount;
+            if (item.soInt.value < 0) item.soInt.value = 0;
         }
 
-        private void UpdateUI()
+        public void AddByType(ItemType itemType, int amount = 1)
         {
-            //uiTextCoins.text = coins.ToString();
-            //UIInGameManager.UpdateTextCoins(coins.ToString());
-        } 
+            if (amount < 0) return;
+            itemSetups.Find(i => i.itemType == itemType).soInt.value += amount;
+        }
+
+        [NaughtyAttributes.Button]
+        private void AddCoin()
+        {
+            AddByType(ItemType.COIN);
+        }
+        [NaughtyAttributes.Button]
+        private void AddLifePack()
+        {
+            AddByType(ItemType.LIFE_PACK);
+        }
     }
 
     [System.Serializable]
