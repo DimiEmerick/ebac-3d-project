@@ -22,6 +22,7 @@ namespace Boss
         public HealthBase healthBase;
         public EbacPlayer player;
         public FlashColor flashColor;
+        public BossTrigger bossTrigger;
 
         [Header("Animation")]
         public AnimationBase animationBase;
@@ -50,6 +51,7 @@ namespace Boss
             Init();
             if(healthBase != null) healthBase.OnKill += OnBossKill;
             player = GameObject.FindObjectOfType<EbacPlayer>();
+            bossTrigger = GameObject.FindObjectOfType<BossTrigger>();
         }
 
         private void Init()
@@ -67,6 +69,7 @@ namespace Boss
         {
             SwitchState(BossAction.DEATH);
             Destroy(gameObject, 1.45f);
+            bossTrigger.TurnCameraOff();
         }
 
         public void Damage(float damage)

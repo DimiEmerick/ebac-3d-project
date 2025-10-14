@@ -29,6 +29,11 @@ public class BossTrigger : MonoBehaviour
         bossCamera.SetActive(true);
     }
 
+    public void TurnCameraOff()
+    {
+        bossCamera.SetActive(false);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = gizmoColor;
