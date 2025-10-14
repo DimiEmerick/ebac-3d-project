@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using Ebac.Core.Singleton;
 
-namespace Itens
+namespace Items
 {
     public enum ItemType
     {

@@ -2,41 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCollectableBase : MonoBehaviour
+namespace Items
 {
-    public string compareTag = "Player";
-    public float timeToHide = 3f;
-    public ParticleSystem itemParticleSystem;
-    public GameObject graphicItem;
-    public Collider colliderItem;
-
-    [Header("Sounds")]
-    public AudioSource audioSource;
-
-    private void OnTriggerEnter(Collider collision)
+    public class ItemCollectableBase : MonoBehaviour
     {
-        if (collision.transform.CompareTag(compareTag))
+        public ItemType itemType;
+        public string compareTag = "Player";
+        public float timeToHide = 3f;
+        public ParticleSystem itemParticleSystem;
+        public GameObject graphicItem;
+        public Collider colliderItem;
+
+        [Header("Sounds")]
+        public AudioSource audioSource;
+
+        private void OnTriggerEnter(Collider collision)
         {
-            Collect();
+            if (collision.transform.CompareTag(compareTag))
+            {
+                Collect();
+            }
         }
-    }
 
-    protected virtual void Collect()
-    {
-        if (graphicItem != null) graphicItem.SetActive(false);
-        Invoke("HideObject", timeToHide);
-        colliderItem.enabled = false;
-        OnCollect();
-    }
+        protected virtual void Collect()
+        {
+            if (graphicItem != null) graphicItem.SetActive(false);
+            Invoke("HideObject", timeToHide);
+            colliderItem.enabled = false;
+            OnCollect();
+        }
 
-    private void HideObject()
-    {
-        gameObject.SetActive(false);
-    }
+        private void HideObject()
+        {
+            gameObject.SetActive(false);
+        }
 
-    protected virtual void OnCollect()
-    {
-        if (itemParticleSystem != null) itemParticleSystem.Play();
-        if (audioSource != null) audioSource.Play();
+        protected virtual void OnCollect()
+        {
+            if (itemParticleSystem != null) itemParticleSystem.Play();
+            if (audioSource != null) audioSource.Play();
+            ItemManager.Instance.AddByType(itemType);
+        }
     }
 }
