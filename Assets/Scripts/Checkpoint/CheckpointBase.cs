@@ -11,14 +11,13 @@ public class CheckpointBase : MonoBehaviour
     public int key = 01;
 
     private bool _checkpointActive = false;
-    private string _checkpointKey = "CheckpointKey";
+    // private string _checkpointKey = "CheckpointKey";
 
     private void OnTriggerEnter(Collider other)
     {
         if(!_checkpointActive && other.transform.tag == "Player")
         {
             Check();
-            
         }
     }
 

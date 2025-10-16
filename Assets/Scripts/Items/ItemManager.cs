@@ -16,8 +16,9 @@ namespace Items
     {
         public List<ItemSetup> itemSetups;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             if (Instance == null)
                 Instance = this;
             else
@@ -33,9 +34,8 @@ namespace Items
             }
         }
 
-        public void RemoveByType(ItemType itemType, int amount = -1)
+        public void RemoveByType(ItemType itemType, int amount = 1)
         {
-            if (amount > 0) return;
             var item = itemSetups.Find(i => i.itemType == itemType);
             item.soInt.value -= amount;
             if (item.soInt.value < 0) item.soInt.value = 0;
@@ -45,6 +45,11 @@ namespace Items
         {
             if (amount < 0) return;
             itemSetups.Find(i => i.itemType == itemType).soInt.value += amount;
+        }
+        
+        public ItemSetup GetItemByType(ItemType itemType)
+        {
+            return itemSetups.Find(i => i.itemType == itemType);
         }
 
         [NaughtyAttributes.Button]
