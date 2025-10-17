@@ -15,6 +15,7 @@ namespace Items
     public class ItemManager : Singleton<ItemManager>
     {
         public List<ItemSetup> itemSetups;
+        public TextMeshProUGUI tutorialText;
 
         protected override void Awake()
         {

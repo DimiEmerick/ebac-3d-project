@@ -27,6 +27,8 @@ public class ActionLifePack : MonoBehaviour
         if(Input.GetKeyDown(keyCode))
         {
             RecoverLife();
+            ItemManager.Instance.tutorialText.text = "";
+            ItemManager.Instance.tutorialText.gameObject.SetActive(false);
         }
     }
 }
