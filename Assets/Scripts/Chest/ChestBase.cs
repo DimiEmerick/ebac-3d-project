@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class ChestBase : MonoBehaviour
 {
+    public KeyCode keyCode = KeyCode.Z;
     public Animator chestAnimator;
     public string triggerOpen = "Open";
 
@@ -13,23 +14,43 @@ public class ChestBase : MonoBehaviour
     public float tweenDuration = .2f;
     public Ease tweenEase = Ease.OutBack;
 
+    [Space]
+    public ChestItemBase chestItem;
+
     private float _startScale;
+    private bool _chestOpened = false;
 
     private void Start()
     {
         _startScale = notification.transform.localScale.x;
+        HideNotification();
     }
 
     [NaughtyAttributes.Button]
     private void OpenChest()
     {
+        if (_chestOpened) return;
         chestAnimator.SetTrigger(triggerOpen);
+        _chestOpened = true;
+        HideNotification();
+        Invoke(nameof(ShowItem), 1f);
+    }
+
+    private void ShowItem()
+    {
+        chestItem.ShowItem();
+        Invoke(nameof(CollectItem), 1f);
+    }
+
+    private void CollectItem()
+    {
+        chestItem.Collect();
     }
 
     public void OnTriggerEnter(Collider other)
     {
         EbacPlayer p = other.transform.GetComponent<EbacPlayer>();
-        if(p != null)
+        if(p != null && !_chestOpened)
         {
             ShowNotification();
         }
@@ -56,5 +77,13 @@ public class ChestBase : MonoBehaviour
     private void HideNotification()
     {
         notification.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(keyCode) && notification.activeSelf)
+        {
+            OpenChest();
+        }
     }
 }
