@@ -45,11 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551a90f0f12e7b748b0ce8c9bf636453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   compareTag: Player
   timeToHide: 3
   itemParticleSystem: {fileID: 0}
   graphicItem: {fileID: 5772763395417302711}
-  colliderItem: {fileID: 6691663400915762041}
+  triggerItem: {fileID: 6691663400915762041}
+  colliderItem: {fileID: 0}
   audioSource: {fileID: 0}
 --- !u!135 &6691663400915762041
 SphereCollider:

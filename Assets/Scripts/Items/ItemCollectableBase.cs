@@ -11,6 +11,7 @@ namespace Items
         public float timeToHide = 3f;
         public ParticleSystem itemParticleSystem;
         public GameObject graphicItem;
+        public Collider triggerItem;
         public Collider colliderItem;
 
         [Header("Sounds")]
@@ -28,7 +29,8 @@ namespace Items
         {
             if (graphicItem != null) graphicItem.SetActive(false);
             Invoke("HideObject", timeToHide);
-            colliderItem.enabled = false;
+            if (colliderItem != null) colliderItem.enabled = false;
+            triggerItem.enabled = false;
             OnCollect();
         }
 

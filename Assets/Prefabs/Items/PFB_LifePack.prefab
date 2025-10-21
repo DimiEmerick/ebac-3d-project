@@ -50,7 +50,8 @@ MonoBehaviour:
   timeToHide: 3
   itemParticleSystem: {fileID: 0}
   graphicItem: {fileID: 5772763395417302711}
-  colliderItem: {fileID: 6691663400915762041}
+  triggerItem: {fileID: 6691663400915762041}
+  colliderItem: {fileID: 0}
   audioSource: {fileID: 0}
 --- !u!135 &6691663400915762041
 SphereCollider:
