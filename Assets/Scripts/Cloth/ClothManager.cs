@@ -13,6 +13,11 @@ namespace Cloth
     public class ClothManager : Singleton<ClothManager>
     {
         public List<ClothSetup> clothSetups;
+
+        public ClothSetup GetSetupByType(ClothType clothType)
+        {
+            return clothSetups.Find(i => i.clothType == clothType);
+        }
     }
 
     [System.Serializable]
