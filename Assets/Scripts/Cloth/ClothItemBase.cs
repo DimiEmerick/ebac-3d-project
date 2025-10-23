@@ -21,6 +21,8 @@ namespace Cloth
         public virtual void Collect()
         {
             Debug.Log("Collect");
+            var setup = ClothManager.Instance.GetSetupByType(clothType);
+            EbacPlayer.Instance.clothChanger.ChangeTexture(setup);
             HideObject();
         }
 

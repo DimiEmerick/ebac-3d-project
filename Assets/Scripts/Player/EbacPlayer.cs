@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
+using Cloth;
 
 public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
 {
     public List<Collider> colliders;
     public Animator playerAnimator;
     public CharacterController characterController;
+    public ClothChanger clothChanger;
     public float speed = 1f;
     public float turnSpeed = 1f;
     public float gravity = -9.8f;
@@ -133,6 +135,19 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     }
 
     IEnumerator ChangeSpeedCoroutine(float localSpeed, float duration)
+    {
+        var defaultSpeed = speed;
+        speed = localSpeed;
+        yield return new WaitForSeconds(duration);
+        speed = defaultSpeed;
+    }
+
+    public void ChangeTexture(ClothSetup setup, float duration)
+    {
+        StartCoroutine(ChangeTextureCoroutine(setup, duration));
+    }
+
+    IEnumerator ChangeTextureCoroutine(ClothSetup setup, float duration)
     {
         var defaultSpeed = speed;
         speed = localSpeed;
