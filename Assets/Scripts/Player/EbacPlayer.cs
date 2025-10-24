@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using Ebac.Core.Singleton;
 using Cloth;
 
@@ -9,7 +10,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     public List<Collider> colliders;
     public Animator playerAnimator;
     public CharacterController characterController;
-    public ClothChanger clothChanger;
+    public TextMeshProUGUI notificationText;
     public float speed = 1f;
     public float turnSpeed = 1f;
     public float gravity = -9.8f;
@@ -27,6 +28,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     public HealthBase healthBase;
     public List<UIFillUpdater> uiGunUpdaters;
 
+    [SerializeField] private ClothChanger _clothChanger;
     private float _vSpeed = 0f;
     private bool _alive = true;
 
@@ -149,9 +151,20 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
 
     IEnumerator ChangeTextureCoroutine(ClothSetup setup, float duration)
     {
-        var defaultSpeed = speed;
-        speed = localSpeed;
+        _clothChanger.ChangeTexture(setup);
         yield return new WaitForSeconds(duration);
-        speed = defaultSpeed;
+        _clothChanger.ResetTexture();
+    }
+
+    public void ShowText(string text)
+    {
+        StartCoroutine(NotificationText(text));
+    }
+
+    IEnumerator NotificationText(string text)
+    {
+        notificationText.text = text;
+        yield return new WaitForSeconds(2f);
+        notificationText.text = "";
     }
 }

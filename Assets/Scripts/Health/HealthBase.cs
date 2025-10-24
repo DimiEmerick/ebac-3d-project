@@ -8,6 +8,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     public List<UIFillUpdater> uiFillUpdaters;
 
     public float startLife = 10f;
+    public float damageMultiplier = 1f;
     public bool destroyOnKill = false;
 
     public Action<HealthBase> OnDamage;
@@ -41,7 +42,7 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public void Damage(float f)
     {
-        _currentLife -= f;
+        _currentLife -= f * damageMultiplier;
         if(_currentLife <= 0)
         {
             Kill();
@@ -66,5 +67,17 @@ public class HealthBase : MonoBehaviour, IDamageable
         {
             uiFillUpdaters.ForEach(i => i.UpdateValue((float) _currentLife / startLife));
         }
+    }
+
+    public void ChangeDamageMultiplier(float damageMultiplier, float duration)
+    {
+        StartCoroutine(ChangeDamageMultiplierCoroutine(damageMultiplier, duration));
+    }
+
+    IEnumerator ChangeDamageMultiplierCoroutine(float damageMultiplier, float duration)
+    {
+        this.damageMultiplier = damageMultiplier;
+        yield return new WaitForSeconds(duration);
+        this.damageMultiplier = 1;
     }
 }
