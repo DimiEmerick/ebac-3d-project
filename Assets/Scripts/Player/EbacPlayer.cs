@@ -31,6 +31,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     [SerializeField] private ClothChanger _clothChanger;
     private float _vSpeed = 0f;
     private bool _alive = true;
+    private bool _jumping = false;
 
     private void OnValidate()
     {
@@ -97,6 +98,11 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
             if(Input.GetKeyDown(jumpKeyCode))
             {
                 _vSpeed = jumpSpeed;
+                if(!_jumping)
+                {
+                    _jumping = true;
+                    playerAnimator.SetTrigger("Jump");
+                }
             }
         }
 
