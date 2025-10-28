@@ -8,6 +8,7 @@ public class PlayerHabilityShoot : PlayerHabilityBase
     public GunBase gunBase1;
     public GunBase gunBase2;
     public Transform gunPosition;
+    public FlashColor flashColor;
 
     private GunBase _currentGun;
 
@@ -37,6 +38,7 @@ public class PlayerHabilityShoot : PlayerHabilityBase
     private void StartShoot()
     {
         _currentGun.StartShoot();
+        flashColor?.Flash();
         Debug.Log("Start shoot!");
     }
     private void CancelShoot()

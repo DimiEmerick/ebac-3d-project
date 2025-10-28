@@ -94,6 +94,11 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
 
         if(characterController.isGrounded)
         {
+            if(_jumping)
+            {
+                _jumping = false;
+                playerAnimator.SetTrigger("Land");
+            }
             _vSpeed = 0;
             if(Input.GetKeyDown(jumpKeyCode))
             {
