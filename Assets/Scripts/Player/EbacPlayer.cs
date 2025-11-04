@@ -18,6 +18,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     public KeyCode jumpKeyCode = KeyCode.Space;
 
     [Header("Run Setup")]
+    public ParticleSystem vfxRun;
     public KeyCode keyRun = KeyCode.LeftShift;
     public float speedRun = 1.5f;
 
@@ -83,6 +84,14 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     {
         // Damage(damage);
     }
+
+    public void Respawn()
+    {
+        if(CheckpointManager.Instance.HasCheckpoint()) 
+        {
+            transform.position = CheckpointManager.Instance.GetPositionFromLastCheckpoint();
+        }
+    }
     #endregion
 
     void Update()
@@ -98,6 +107,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
             {
                 _jumping = false;
                 playerAnimator.SetTrigger("Land");
+                vfxRun.Play();
             }
             _vSpeed = 0;
             if(Input.GetKeyDown(jumpKeyCode))
@@ -107,6 +117,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
                 {
                     _jumping = true;
                     playerAnimator.SetTrigger("Jump");
+                    vfxRun.Stop();
                 }
             }
         }
@@ -134,13 +145,6 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     }
 
     [NaughtyAttributes.Button]
-    public void Respawn()
-    {
-        if(CheckpointManager.Instance.HasCheckpoint()) 
-        {
-            transform.position = CheckpointManager.Instance.GetPositionFromLastCheckpoint();
-        }
-    }
 
     public void ChangeSpeed(float speed, float duration)
     {
