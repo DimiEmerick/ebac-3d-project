@@ -7,6 +7,7 @@ using Ebac.Core.Singleton;
 public class SaveManager : Singleton<SaveManager>
 {
     private SaveSetup _saveSetup;
+    private string _path = Application.dataPath + "/save.txt";
 
     protected override void Awake()
     {
@@ -35,16 +36,31 @@ public class SaveManager : Singleton<SaveManager>
     public void SaveLastLevel(int level)
     {
         _saveSetup.lastLevel = level;
+        SaveItems();
         Save();
     } 
+
+    public void SaveItems()
+    {
+        _saveSetup.coins = Items.ItemManager.Instance.GetItemByType(Items.ItemType.COIN).soInt.value;
+        _saveSetup.health = Items.ItemManager.Instance.GetItemByType(Items.ItemType.LIFE_PACK).soInt.value;
+        Save();
+    }
     #endregion
 
 
     private void SaveFile(string json)
     {
-        string path = Application.dataPath + "/save.txt";
-        Debug.Log(path);
-        File.WriteAllText(path, json);
+        
+        Debug.Log(_path);
+        File.WriteAllText(_path, json);
+    }
+
+    private void Load()
+    {
+        string fileLoaded = "";
+
+        if (File.Exists(_path)) fileLoaded = File.ReadAllText(_path);
     }
 
     [NaughtyAttributes.Button]
@@ -63,5 +79,7 @@ public class SaveManager : Singleton<SaveManager>
 public class SaveSetup
 {
     public int lastLevel;
+    public int coins;
+    public int health;
     public string playerName;
 }
