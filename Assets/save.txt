@@ -1,4 +1,0 @@
-{
-    "lastLevel": 1,
-    "playerName": "Dimi"
-}
