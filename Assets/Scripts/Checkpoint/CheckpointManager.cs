@@ -8,6 +8,17 @@ public class CheckpointManager : Singleton<CheckpointManager>
     public int lastCheckpointKey = 0;
     public List<CheckpointBase> checkpoints;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    private void Start()
+    {
+        if (SaveManager.Instance.Setup != null)
+            lastCheckpointKey = SaveManager.Instance.Setup.checkpoint;
+    }
+
     public bool HasCheckpoint()
     {
         return lastCheckpointKey > 0;
@@ -19,6 +30,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
         {
             lastCheckpointKey = i;
         }
+        SaveManager.Instance.SaveLastLevel(i);
     }
 
     public Vector3 GetPositionFromLastCheckpoint()

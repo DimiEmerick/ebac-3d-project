@@ -14,4 +14,12 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(s);
     }
+
+    public void LoadGame()
+    {
+        if (SaveManager.Instance.Setup != null)
+            Load(SaveManager.Instance.Setup.lastLevel);
+        else
+            Load(1);
+    }
 }

@@ -14,18 +14,16 @@ public class SaveManager : Singleton<SaveManager>
 
     public Action<SaveSetup> FileLoaded;
 
+    public SaveSetup Setup
+    {
+        get { return _saveSetup; }
+    }
+
     protected override void Awake()
     {
         base.Awake();
-        _path = Application.streamingAssetsPath + "/save.txt";
+        _path = Application.dataPath + "/save.txt";
         DontDestroyOnLoad(gameObject);
-    }
-
-    private void CreateNewSave()
-    {
-        _saveSetup = new SaveSetup();
-        _saveSetup.lastLevel = 0;
-        _saveSetup.playerName = "Dimi";
     }
 
     private void Start()
@@ -33,7 +31,15 @@ public class SaveManager : Singleton<SaveManager>
         Invoke(nameof(Load), .1f);
     }
 
-    #region SAVE
+    private void CreateNewSave()
+    {
+        _saveSetup = new SaveSetup();
+        _saveSetup.lastLevel = 1;
+        _saveSetup.checkpoint = 0;
+        _saveSetup.playerName = "Dimi";
+    }
+
+    #region SAVE_CONTENT
     [NaughtyAttributes.Button]
     private void Save()
     {
@@ -48,9 +54,12 @@ public class SaveManager : Singleton<SaveManager>
         Save();
     }
 
-    public void SaveLastLevel(int level)
+    public void SaveLastLevel(int c)
     {
-        _saveSetup.lastLevel = level;
+        _saveSetup.lastLevel = 1;
+        _saveSetup.checkpoint = c;
+        _saveSetup.health = EbacPlayer.Instance.healthBase.currentLife;
+        _saveSetup.cloth = EbacPlayer.Instance.clothChanger.currentTexture;
         SaveItems();
         Save();
     } 
@@ -70,7 +79,7 @@ public class SaveManager : Singleton<SaveManager>
     }
 
     [NaughtyAttributes.Button]
-    private void Load()
+    public void Load()
     {
         string fileLoaded = "";
         if (File.Exists(_path))
@@ -85,25 +94,27 @@ public class SaveManager : Singleton<SaveManager>
             Save();
         }
         FileLoaded.Invoke(_saveSetup);
+        Debug.Log("File Loaded: " + fileLoaded);
     }
 
-    [NaughtyAttributes.Button]
-    private void SaveLevelOne()
+    public void DeleteSave()
     {
-        SaveLastLevel(1);
-    }
-    [NaughtyAttributes.Button]
-    private void SaveLevelFive()
-    {
-        SaveLastLevel(5);
+        if (File.Exists(_path))
+        {
+            File.Delete(_path);
+            CreateNewSave();
+        }
     }
 }
 
 [System.Serializable]
 public class SaveSetup
 {
-    public int lastLevel;
+    public int checkpoint;
     public int coins;
-    public int health;
+    public int lifePacks;
+    public int lastLevel;
+    public float health;
     public string playerName;
+    public Texture2D cloth;
 }

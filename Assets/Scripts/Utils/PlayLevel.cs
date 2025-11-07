@@ -9,16 +9,20 @@ public class PlayLevel : MonoBehaviour
 
     private void Start()
     {
+        //  Inscreve o método OnLoad no evento FileLoaded
         SaveManager.Instance.FileLoaded += OnLoad;
     }
 
     public void OnLoad(SaveSetup setup)
     {
-        uiTextName.text = "Play " + (setup.lastLevel + 1);
+        //  Atualiza o texto do botão com o próximo nível
+        uiTextName.text = "Jogar (" + (setup.lastLevel) + ")";
     }
 
     private void OnDestroy()
     {
-        SaveManager.Instance.FileLoaded += OnLoad;
+        //  Remove a inscrição do evento quando o objeto (botão) for destruído
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.FileLoaded -= OnLoad;
     }
 }

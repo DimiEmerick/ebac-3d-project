@@ -14,7 +14,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     public Action<HealthBase> OnDamage;
     public Action<HealthBase> OnKill;
 
-    [SerializeField] private float _currentLife;
+    public float currentLife;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public void ResetLife()
     {
-        _currentLife = startLife;
+        currentLife = startLife;
         UpdateUI();
     }
 
@@ -42,8 +42,8 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public void Damage(float f)
     {
-        _currentLife -= f * damageMultiplier;
-        if(_currentLife <= 0)
+        currentLife -= f * damageMultiplier;
+        if(currentLife <= 0)
         {
             Kill();
         }
@@ -65,7 +65,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     {
         if (uiFillUpdaters != null)
         {
-            uiFillUpdaters.ForEach(i => i.UpdateValue((float) _currentLife / startLife));
+            uiFillUpdaters.ForEach(i => i.UpdateValue((float) currentLife / startLife));
         }
     }
 

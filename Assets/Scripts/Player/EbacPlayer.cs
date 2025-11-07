@@ -11,6 +11,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     public Animator playerAnimator;
     public CharacterController characterController;
     public TextMeshProUGUI notificationText;
+    public ClothChanger clothChanger;
     public float speed = 1f;
     public float turnSpeed = 1f;
     public float gravity = -9.8f;
@@ -29,7 +30,6 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     public HealthBase healthBase;
     public List<UIFillUpdater> uiGunUpdaters;
 
-    [SerializeField] private ClothChanger _clothChanger;
     private float _vSpeed = 0f;
     private bool _alive = true;
     private bool _jumping = false;
@@ -45,6 +45,12 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
         OnValidate();
         healthBase.OnDamage += Damage;
         healthBase.OnKill += OnKill;
+    }
+
+    private void Start()
+    {
+        Respawn();
+        healthBase.currentLife = SaveManager.Instance.Setup.health;
     }
 
     #region LIFE
@@ -145,7 +151,6 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     }
 
     [NaughtyAttributes.Button]
-
     public void ChangeSpeed(float speed, float duration)
     {
         StartCoroutine(ChangeSpeedCoroutine(speed, duration));
@@ -166,9 +171,9 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
 
     IEnumerator ChangeTextureCoroutine(ClothSetup setup, float duration)
     {
-        _clothChanger.ChangeTexture(setup);
+        clothChanger.ChangeTexture(setup);
         yield return new WaitForSeconds(duration);
-        _clothChanger.ResetTexture();
+        clothChanger.ResetTexture();
     }
 
     public void ShowText(string text)

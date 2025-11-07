@@ -25,6 +25,13 @@ namespace Items
             else
                 Destroy(gameObject);
             Reset();
+            LoadItemsFromSave();
+        }
+
+        private void LoadItemsFromSave()
+        {
+            AddByType(ItemType.COIN, SaveManager.Instance.Setup.coins);
+            AddByType(ItemType.LIFE_PACK, SaveManager.Instance.Setup.lifePacks);
         }
 
         private void Reset()
