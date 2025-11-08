@@ -10,14 +10,16 @@ namespace Cloth
         public SkinnedMeshRenderer mesh;
         public Texture2D texture;
         public Texture2D defaultTexture;
-        public Texture2D currentTexture;
         public string shaderID = "_EmissionMap";
 
+        private void Awake()
+        {
+            defaultTexture = (Texture2D)mesh.sharedMaterials[0].GetTexture(shaderID);
+        }
 
         [NaughtyAttributes.Button]
         private void ChangeTexture()
         {
-            currentTexture = mesh.material.mainTexture as Texture2D;
             mesh.sharedMaterials[0].SetTexture(shaderID, texture);
         }
 
@@ -29,7 +31,6 @@ namespace Cloth
         public void ResetTexture()
         {
             mesh.sharedMaterials[0].SetTexture(shaderID, defaultTexture);
-            currentTexture = mesh.material.mainTexture as Texture2D;
         }
     }
 }
