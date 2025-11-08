@@ -59,7 +59,6 @@ public class SaveManager : Singleton<SaveManager>
         _saveSetup.lastLevel = 1;
         _saveSetup.checkpoint = c;
         _saveSetup.health = EbacPlayer.Instance.healthBase.currentLife;
-        _saveSetup.cloth = EbacPlayer.Instance.clothChanger.currentTexture;
         SaveItems();
         Save();
     } 
