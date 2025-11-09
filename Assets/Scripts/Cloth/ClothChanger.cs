@@ -12,11 +12,6 @@ namespace Cloth
         public Texture2D defaultTexture;
         public string shaderID = "_EmissionMap";
 
-        private void Awake()
-        {
-            defaultTexture = (Texture2D)mesh.sharedMaterials[0].GetTexture(shaderID);
-        }
-
         [NaughtyAttributes.Button]
         public void ChangeTexture(Texture2D texture)
         {
