@@ -54,6 +54,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
         {
             healthBase.currentLife = SaveManager.Instance.Setup.health;
             healthBase.UpdateUI();
+            clothChanger.ChangeTexture(SaveManager.Instance.Setup.cloth);
         }
     }
 
@@ -97,9 +98,12 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
 
     public void Respawn()
     {
-        if(CheckpointManager.Instance.HasCheckpoint()) 
+        if (CheckpointManager.Instance != null)
         {
-            transform.position = CheckpointManager.Instance.GetPositionFromLastCheckpoint();
+            if(CheckpointManager.Instance.HasCheckpoint()) 
+            {
+                transform.position = CheckpointManager.Instance.GetPositionFromLastCheckpoint();
+            }
         }
     }
     #endregion
@@ -177,7 +181,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     {
         clothChanger.ChangeTexture(setup);
         yield return new WaitForSeconds(duration);
-        clothChanger.ResetTexture();
+        //  clothChanger.ResetTexture();
     }
 
     public void ShowText(string text)

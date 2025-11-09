@@ -18,7 +18,7 @@ namespace Cloth
         }
 
         [NaughtyAttributes.Button]
-        private void ChangeTexture()
+        public void ChangeTexture(Texture2D texture)
         {
             mesh.sharedMaterials[0].SetTexture(shaderID, texture);
         }

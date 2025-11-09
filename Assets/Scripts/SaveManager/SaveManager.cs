@@ -36,7 +36,9 @@ public class SaveManager : Singleton<SaveManager>
         _saveSetup = new SaveSetup();
         _saveSetup.lastLevel = 1;
         _saveSetup.checkpoint = 0;
+        _saveSetup.health = (int)EbacPlayer.Instance.healthBase.startLife;
         _saveSetup.playerName = "Dimi";
+        _saveSetup.cloth = EbacPlayer.Instance.clothChanger.defaultTexture;
     }
 
     #region SAVE_CONTENT
@@ -58,7 +60,8 @@ public class SaveManager : Singleton<SaveManager>
     {
         _saveSetup.lastLevel = 1;
         _saveSetup.checkpoint = c;
-        _saveSetup.health = EbacPlayer.Instance.healthBase.currentLife;
+        _saveSetup.health = (int)EbacPlayer.Instance.healthBase.currentLife;
+        _saveSetup.cloth = (Texture2D)EbacPlayer.Instance.clothChanger.mesh.sharedMaterials[0].GetTexture("_EmissionMap");
         SaveItems();
         Save();
     } 
@@ -66,7 +69,7 @@ public class SaveManager : Singleton<SaveManager>
     public void SaveItems()
     {
         _saveSetup.coins = Items.ItemManager.Instance.GetItemByType(Items.ItemType.COIN).soInt.value;
-        _saveSetup.health = Items.ItemManager.Instance.GetItemByType(Items.ItemType.LIFE_PACK).soInt.value;
+        _saveSetup.lifePacks = Items.ItemManager.Instance.GetItemByType(Items.ItemType.LIFE_PACK).soInt.value;
         Save();
     }
     #endregion
@@ -113,7 +116,7 @@ public class SaveSetup
     public int coins;
     public int lifePacks;
     public int lastLevel;
-    public float health;
+    public int health;
     public string playerName;
     public Texture2D cloth;
 }
