@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551a90f0f12e7b748b0ce8c9bf636453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxType: 2
   itemType: 0
   compareTag: Player
   timeToHide: 3

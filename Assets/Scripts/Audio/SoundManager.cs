@@ -21,7 +21,7 @@ public class SoundManager : Singleton<SoundManager>
         return musicSetups.Find(i => i.musicType == musicType);
     }
 
-    public SFXSetup GetMusicByType(SFXType sfxType)
+    public SFXSetup GetSFXByType(SFXType sfxType)
     {
         return sfxSetups.Find(i => i.sfxType == sfxType);
     }
@@ -43,6 +43,7 @@ public class MusicSetup
 
 public enum SFXType
 {
+    NONE,
     TYPE_01,
     TYPE_02,
     TYPE_03
