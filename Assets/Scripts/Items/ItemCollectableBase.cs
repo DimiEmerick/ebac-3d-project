@@ -6,7 +6,7 @@ namespace Items
 {
     public class ItemCollectableBase : MonoBehaviour
     {
-        public SFXType sfxType;
+        //  public SFXType sfxType;
         public ItemType itemType;
         public string compareTag = "Player";
         public float timeToHide = 3f;
@@ -26,14 +26,16 @@ namespace Items
             }
         }
 
-        private void PlaySFX()
+        /* private void PlaySFX()
         {
             SFXPool.Instance.Play(sfxType);
-        }
+        } */
 
         protected virtual void Collect()
         {
-            PlaySFX();
+            //  PlaySFX();
+            var itemSetup = ItemManager.Instance.GetItemByType(itemType);
+            ItemManager.Instance.PlaySFX(itemSetup);
             if (graphicItem != null) graphicItem.SetActive(false);
             Invoke("HideObject", timeToHide);
             if (colliderItem != null) colliderItem.enabled = false;

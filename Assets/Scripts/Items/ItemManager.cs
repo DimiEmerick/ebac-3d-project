@@ -70,12 +70,18 @@ namespace Items
         {
             AddByType(ItemType.LIFE_PACK);
         }
+
+        public void PlaySFX(ItemSetup itemSetup)
+        {
+            SFXPool.Instance.Play(itemSetup.sfx);
+        }
     }
 
     [System.Serializable]
     public class ItemSetup
     {
         public ItemType itemType;
+        public SFXType sfx;
         public SOInt soInt;
         public Sprite icon;
     }

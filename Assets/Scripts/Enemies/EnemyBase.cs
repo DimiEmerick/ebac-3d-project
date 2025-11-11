@@ -23,7 +23,7 @@ namespace Enemy
         public float startAnimationDuration = .2f;
         public Ease startAnimationEase = Ease.OutBack;
 
-        [Header("Evetns")]
+        [Header("Events")]
         public UnityEvent OnKillEvent;
 
         [SerializeField] private AnimationBase _animationBase;
