@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCode: 122
+  sfxType: 2
   chestAnimator: {fileID: 5145176002583171608}
   triggerOpen: Open
   notification: {fileID: 5470823566142301317}

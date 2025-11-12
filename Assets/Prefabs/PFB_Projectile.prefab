@@ -279,12 +279,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd63c36c4e3fa164bb165e36c3433430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  sfxType: 3
+  tagToHit:
+  - Enemy
   damageAmount: 1
   timeToDestroy: 2
   speed: 50
-  tagToHit:
-  - Enemy
-  direction: {x: 0, y: 0, z: 0}
 --- !u!54 &7160774252067913120
 Rigidbody:
   m_ObjectHideFlags: 0

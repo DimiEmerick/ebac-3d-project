@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5100328185069366118}
   - component: {fileID: 3184634165222680268}
   m_Layer: 0
-  m_Name: PFB_EnemyPurpleEBAC
+  m_Name: PFB_EnemyPurpleEbac
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe89fdfe2698a1945a7e26722f340d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxType: 5
   enemyCollider: {fileID: 6618849245115166614}
   flashColor: {fileID: 7914173393610204175}
   enemyParticleSystem: {fileID: 8293095723157715990}
@@ -124,6 +125,9 @@ MonoBehaviour:
   startWithBornAnimation: 1
   startAnimationDuration: 0.2
   startAnimationEase: 27
+  OnKillEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _animationBase: {fileID: 4152284732125463923}
   waypoints: []
   minDistance: 1

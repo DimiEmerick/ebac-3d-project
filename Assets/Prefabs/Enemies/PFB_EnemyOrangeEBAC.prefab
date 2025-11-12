@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d9c8e379b41754facc536c2a1ea535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxType: 5
   enemyCollider: {fileID: 4446892559972428568}
   flashColor: {fileID: 2957121743251971737}
   enemyParticleSystem: {fileID: 3257570778608552217}
@@ -89,6 +90,9 @@ MonoBehaviour:
   startWithBornAnimation: 1
   startAnimationDuration: 0.2
   startAnimationEase: 27
+  OnKillEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _animationBase: {fileID: 6914021172478050813}
   gunBase: {fileID: 6087083065177231298}
 --- !u!114 &6914021172478050813

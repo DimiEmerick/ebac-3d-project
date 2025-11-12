@@ -6,6 +6,7 @@ using Items;
 public class ActionLifePack : MonoBehaviour
 {
     public KeyCode keyCode = KeyCode.L;
+    public SFXType sfxType;
     public SOInt soInt;
 
     private void Start()
@@ -19,6 +20,7 @@ public class ActionLifePack : MonoBehaviour
         {
             ItemManager.Instance.RemoveByType(ItemType.LIFE_PACK);
             EbacPlayer.Instance.healthBase.ResetLife();
+            SFXPool.Instance.Play(sfxType);
         }
     }
 

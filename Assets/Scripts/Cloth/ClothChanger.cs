@@ -12,7 +12,6 @@ namespace Cloth
         public Texture2D defaultTexture;
         public string shaderID = "_EmissionMap";
 
-        [NaughtyAttributes.Button]
         public void ChangeTexture(Texture2D texture)
         {
             mesh.sharedMaterials[0].SetTexture(shaderID, texture);
@@ -23,6 +22,7 @@ namespace Cloth
             mesh.sharedMaterials[0].SetTexture(shaderID, setup.texture);
         }
 
+        [NaughtyAttributes.Button]
         public void ResetTexture()
         {
             mesh.sharedMaterials[0].SetTexture(shaderID, defaultTexture);

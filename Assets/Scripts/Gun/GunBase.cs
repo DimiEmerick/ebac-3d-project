@@ -27,6 +27,7 @@ public class GunBase : MonoBehaviour
         projectile.transform.position = positionToShoot.position;
         projectile.transform.rotation = positionToShoot.rotation;
         projectile.speed = speed;
+        SFXPool.Instance.Play(projectile.sfxType);
     }
 
     public void StartShoot()

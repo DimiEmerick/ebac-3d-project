@@ -138,6 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65517741}
   - component: {fileID: 65517740}
+  - component: {fileID: 65517742}
   - component: {fileID: 65517739}
   - component: {fileID: 65517738}
   - component: {fileID: 65517737}
@@ -265,6 +266,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &65517742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65517735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2710db8309f804da796e70f08ddb42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 886425184}
+  texture: {fileID: 2800000, guid: 8d0f7b33a4f3bf5459574270675b2718, type: 3}
+  defaultTexture: {fileID: 2800000, guid: 8d0f7b33a4f3bf5459574270675b2718, type: 3}
+  shaderID: _EmissionMap
 --- !u!114 &144486796 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3622006268894213236, guid: fd1fa4a91ea923645bfd93f285dcf241, type: 3}

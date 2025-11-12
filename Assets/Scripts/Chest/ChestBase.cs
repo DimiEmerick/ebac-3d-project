@@ -6,6 +6,7 @@ using DG.Tweening;
 public class ChestBase : MonoBehaviour
 {
     public KeyCode keyCode = KeyCode.Z;
+    public SFXType sfxType;
     public Animator chestAnimator;
     public string triggerOpen = "Open";
 
@@ -45,6 +46,7 @@ public class ChestBase : MonoBehaviour
     private void CollectItem()
     {
         chestItem.Collect();
+        SFXPool.Instance.Play(sfxType);
     }
 
     public void OnTriggerEnter(Collider other)

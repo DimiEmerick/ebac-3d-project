@@ -79,14 +79,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190b3adb21c4b5c4aa8ee144e0dc1470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxType: 5
   enemyCollider: {fileID: 6618849245115166614}
   flashColor: {fileID: 4152284730841321763}
   enemyParticleSystem: {fileID: 4152284731862926053}
   startLife: 10
+  lookAtPlayer: 0
   _currentLife: 0
+  startWithBornAnimation: 1
   startAnimationDuration: 1
   startAnimationEase: 27
-  startWithBornAnimation: 1
+  OnKillEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _animationBase: {fileID: 4152284732125463923}
 --- !u!114 &4152284732125463923
 MonoBehaviour:
@@ -154,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 6446281958060601929}
   skinnedMeshRenderer: {fileID: 0}
+  colorParameter: _EmissionColor
   color: {r: 0.8207547, g: 0.15873085, b: 0.15873085, a: 1}
   duration: 0.1
 --- !u!1001 &3625341478832911339

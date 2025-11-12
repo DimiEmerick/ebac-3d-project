@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b904d53d3f65bc46b3dca1cc9c38275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxType: 5
   enemyCollider: {fileID: 6618849245115166614}
   flashColor: {fileID: 7914173393610204175}
   enemyParticleSystem: {fileID: 8293095723157715990}

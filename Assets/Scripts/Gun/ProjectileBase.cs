@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
 {
+    public Vector3 direction;
+    public SFXType sfxType;
+    public List<string> tagToHit;
     public float damageAmount = 1f;
     public float timeToDestroy = 2f;
     public float speed = 50f;
-    public List<string> tagToHit;
-    public Vector3 direction;
 
     private void Awake()
     {

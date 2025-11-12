@@ -22,6 +22,7 @@ public class GunShootAngle : GunBase
             projectile.transform.localScale = Vector3.one / mult;
             projectile.damageAmount = gunDamage;
             projectile.damageAmount /= mult;
+            SFXPool.Instance.Play(projectile.sfxType);
         }
     }
 }

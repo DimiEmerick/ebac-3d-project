@@ -9,6 +9,7 @@ namespace Enemy
 {
     public class EnemyBase : MonoBehaviour, IDamageable
     {
+        public SFXType sfxType;
         public Collider enemyCollider;
         public FlashColor flashColor;
         public ParticleSystem enemyParticleSystem;
@@ -30,14 +31,10 @@ namespace Enemy
 
 
         #region MÉTODOS UNITY
-        private void Awake()
-        {
-            Init();
-        }
-
         private void Start()
         {
             _player = GameObject.FindObjectOfType<EbacPlayer>();
+            Init();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -85,6 +82,7 @@ namespace Enemy
             if (flashColor != null) flashColor.Flash();
             if (enemyParticleSystem != null) enemyParticleSystem.Emit(15);
             _currentLife -= f;
+            SFXPool.Instance.Play(sfxType);
             if (_currentLife <= 0)
             {
                 Kill();
