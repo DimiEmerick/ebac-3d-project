@@ -16,7 +16,7 @@ public class PlayLevel : MonoBehaviour
     public void OnLoad(SaveSetup setup)
     {
         //  Atualiza o texto do botão com o próximo nível
-        uiTextName.text = "Jogar (" + (setup.lastLevel) + ")";
+        uiTextName.text = "Jogar (Level " + (setup.lastLevel) + ")";
     }
 
     private void OnDestroy()

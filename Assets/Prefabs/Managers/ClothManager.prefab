@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothSetups:
   - clothType: 0
-    texture: {fileID: 2800000, guid: a9450a287c3405e4d84072a61a19faee, type: 3}
+    texture: {fileID: 2800000, guid: 3f2f07b3cab35d14f9754cc2f31b73d9, type: 3}
   - clothType: 1
-    texture: {fileID: 2800000, guid: 054ef39aea4cdd84a9b0f85867f7538d, type: 3}
+    texture: {fileID: 2800000, guid: 86a59169b06a0214b9edca090b5fdbfe, type: 3}
   - clothType: 2
-    texture: {fileID: 2800000, guid: cea36374715f8f249869bc1200c48731, type: 3}
+    texture: {fileID: 2800000, guid: 3395484d940a80b4196148f30bec4b33, type: 3}

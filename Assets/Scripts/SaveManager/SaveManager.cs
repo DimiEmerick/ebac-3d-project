@@ -56,12 +56,12 @@ public class SaveManager : Singleton<SaveManager>
         Save();
     }
 
-    public void SaveLastLevel(int c)
+    public void SaveLastLevel(int checkpoint, int level)
     {
-        _saveSetup.lastLevel = 1;
-        _saveSetup.checkpoint = c;
+        _saveSetup.lastLevel = level;
+        _saveSetup.checkpoint = checkpoint;
         _saveSetup.health = (int)EbacPlayer.Instance.healthBase.currentLife;
-        _saveSetup.cloth = (Texture2D)EbacPlayer.Instance.clothChanger.mesh.sharedMaterials[0].GetTexture("_EmissionMap");
+        _saveSetup.cloth = (Texture2D)EbacPlayer.Instance.clothChanger.mesh.sharedMaterial.GetTexture("_EmissionMap");
         SaveItems();
         Save();
     } 
@@ -105,6 +105,7 @@ public class SaveManager : Singleton<SaveManager>
         {
             File.Delete(_path);
             CreateNewSave();
+            Load();
         }
     }
 }

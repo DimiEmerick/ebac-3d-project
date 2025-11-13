@@ -9,9 +9,9 @@ public class CheckpointBase : MonoBehaviour
     public MeshRenderer meshRenderer;
     public TextMeshProUGUI checkpointText;
     public int key = 01;
+    public int level = 01;
 
     private bool _checkpointActive = false;
-    // private string _checkpointKey = "CheckpointKey";
 
     private void OnTriggerEnter(Collider other)
     {
@@ -41,7 +41,7 @@ public class CheckpointBase : MonoBehaviour
 
     private void SaveCheckpoint()
     {
-        CheckpointManager.Instance.SaveCheckpoint(key);
+        CheckpointManager.Instance.SaveCheckpoint(key, level);
         _checkpointActive = true;
     }
 

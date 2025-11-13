@@ -16,6 +16,11 @@ public class MenuUtilities : MonoBehaviour
     private bool _isMuted;
     private float _currentVolume;
 
+    private void Awake()
+    {
+        ResumeGame();
+    }
+
     private void Start()
     {
         if (volumeBar != null)
@@ -74,5 +79,11 @@ public class MenuUtilities : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-
+    public void ExitGame()
+    {
+        Application.Quit();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
 }

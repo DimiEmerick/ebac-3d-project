@@ -24,13 +24,13 @@ public class CheckpointManager : Singleton<CheckpointManager>
         return lastCheckpointKey > 0;
     }
 
-    public void SaveCheckpoint(int i)
+    public void SaveCheckpoint(int key, int level)
     {
-        if(i > lastCheckpointKey)
+        if(key > lastCheckpointKey)
         {
-            lastCheckpointKey = i;
+            lastCheckpointKey = key;
         }
-        SaveManager.Instance.SaveLastLevel(i);
+        SaveManager.Instance.SaveLastLevel(key, level);
     }
 
     public Vector3 GetPositionFromLastCheckpoint()

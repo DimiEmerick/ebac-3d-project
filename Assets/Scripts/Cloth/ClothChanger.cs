@@ -14,18 +14,21 @@ namespace Cloth
 
         public void ChangeTexture(Texture2D texture)
         {
-            mesh.sharedMaterials[0].SetTexture(shaderID, texture);
+            mesh.sharedMaterial.SetTexture(shaderID, texture);
+            mesh.sharedMaterial.SetTexture("_MainTex", texture);
         }
 
         public void ChangeTexture(ClothSetup setup)
         {
-            mesh.sharedMaterials[0].SetTexture(shaderID, setup.texture);
+            mesh.sharedMaterial.SetTexture(shaderID, setup.texture);
+            mesh.sharedMaterial.SetTexture("_MainTex", setup.texture);
         }
 
         [NaughtyAttributes.Button]
         public void ResetTexture()
         {
-            mesh.sharedMaterials[0].SetTexture(shaderID, defaultTexture);
+            mesh.sharedMaterial.SetTexture(shaderID, defaultTexture);
+            mesh.sharedMaterial.SetTexture("_MainTex", defaultTexture);
         }
     }
 }
