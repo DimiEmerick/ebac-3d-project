@@ -74,6 +74,11 @@ public class MenuUtilities : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void DeleteSave()
+    {
+        SaveManager.Instance.DeleteSave();
+    }
+
     public void ReturnTitleScreen()
     {
         SceneManager.LoadScene(0);
