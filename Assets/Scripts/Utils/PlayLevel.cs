@@ -7,7 +7,7 @@ public class PlayLevel : MonoBehaviour
 {
     public TextMeshProUGUI uiTextName;
 
-    private void Start()
+    private void OnEnable()
     {
         //  Inscreve o método OnLoad no evento FileLoaded
         SaveManager.Instance.FileLoaded += OnLoad;

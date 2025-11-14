@@ -1,11 +1,11 @@
 {
     "checkpoint": 1,
-    "coins": 43,
-    "lifePacks": 1,
-    "lastLevel": 2,
-    "health": 35,
+    "coins": 3,
+    "lifePacks": 0,
+    "lastLevel": 1,
+    "health": 50,
     "playerName": "Dimi",
     "cloth": {
-        "instanceID": 5386
+        "instanceID": 5348
     }
 }

@@ -95,7 +95,7 @@ public class SaveManager : Singleton<SaveManager>
             CreateNewSave();
             Save();
         }
-        FileLoaded.Invoke(_saveSetup);
+        FileLoaded?.Invoke(_saveSetup);
         Debug.Log("File Loaded: " + fileLoaded);
     }
 
