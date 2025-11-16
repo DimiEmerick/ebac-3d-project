@@ -606,7 +606,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 258381e5de65d7240ab9d814058f4d9e, type: 2}
   volumeBar: {fileID: 108397206}
   helpText: {fileID: 0}
-  parameterName: MusicVolume
+  startAnimationDuration: 0
+  audioParameterName: 
 --- !u!114 &108397206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7762,7 +7763,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &536612688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8341,7 +8343,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &637811010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9978,7 +9981,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 258381e5de65d7240ab9d814058f4d9e, type: 2}
   volumeBar: {fileID: 0}
   helpText: {fileID: 1516435097}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &827609267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11054,7 +11058,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &954334600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11204,7 +11209,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 258381e5de65d7240ab9d814058f4d9e, type: 2}
   volumeBar: {fileID: 964049119}
   helpText: {fileID: 0}
-  parameterName: MasterVolume
+  startAnimationDuration: 0
+  audioParameterName: 
 --- !u!114 &964049119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12282,7 +12288,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!4 &1137637626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 488577751038715045, guid: 89811f276fa0d1b4b8c22b3bd2fc5ab3, type: 3}
@@ -12839,7 +12846,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &1261495107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14646,7 +14654,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 258381e5de65d7240ab9d814058f4d9e, type: 2}
   volumeBar: {fileID: 1484679861}
   helpText: {fileID: 0}
-  parameterName: SFXVolume
+  startAnimationDuration: 0
+  audioParameterName: 
 --- !u!114 &1484679861
 MonoBehaviour:
   m_ObjectHideFlags: 0

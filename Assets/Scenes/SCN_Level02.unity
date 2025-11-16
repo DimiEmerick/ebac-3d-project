@@ -859,7 +859,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 258381e5de65d7240ab9d814058f4d9e, type: 2}
   volumeBar: {fileID: 82157981}
   helpText: {fileID: 0}
-  parameterName: MasterVolume
+  startAnimationDuration: 0
+  audioParameterName: 
 --- !u!114 &82157981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9092,7 +9093,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &482599786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14215,7 +14217,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &1008090226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14666,7 +14669,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 258381e5de65d7240ab9d814058f4d9e, type: 2}
   volumeBar: {fileID: 1057421328}
   helpText: {fileID: 0}
-  parameterName: MusicVolume
+  startAnimationDuration: 0
+  audioParameterName: 
 --- !u!114 &1057421328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14879,7 +14883,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112227156}
-  m_LocalRotation: {x: 0.3620264, y: 0.000000022682906, z: -0.00000000880937, w: 0.9321679}
+  m_LocalRotation: {x: 0.3620264, y: -0.000000022682906, z: 0.00000000880937, w: 0.9321679}
   m_LocalPosition: {x: 521.53, y: 1.8299992, z: 281.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17369,7 +17373,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &1418579096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20080,7 +20085,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 258381e5de65d7240ab9d814058f4d9e, type: 2}
   volumeBar: {fileID: 0}
   helpText: {fileID: 1528811965}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &1705194355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22877,7 +22883,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &1897957230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23785,7 +23792,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 258381e5de65d7240ab9d814058f4d9e, type: 2}
   volumeBar: {fileID: 1997599206}
   helpText: {fileID: 0}
-  parameterName: SFXVolume
+  startAnimationDuration: 0
+  audioParameterName: 
 --- !u!114 &1997599206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24481,7 +24489,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058782429}
-  m_LocalRotation: {x: -0.010616689, y: 0.9692126, z: -0.2423033, w: -0.042466726}
+  m_LocalRotation: {x: -0.010616683, y: 0.9692126, z: -0.2423033, w: -0.042466704}
   m_LocalPosition: {x: 522.842, y: 4.6099997, z: 303.1625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24541,7 +24549,8 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   volumeBar: {fileID: 0}
   helpText: {fileID: 0}
-  parameterName: 
+  startAnimationDuration: 0.5
+  audioParameterName: 
 --- !u!114 &2058933236
 MonoBehaviour:
   m_ObjectHideFlags: 0

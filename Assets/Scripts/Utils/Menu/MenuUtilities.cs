@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class MenuUtilities : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Scrollbar volumeBar;
     public TextMeshProUGUI helpText;
-    public string parameterName;
+    public float startAnimationDuration = .5f;
+    public string audioParameterName;
 
     private bool _isMuted;
     private float _currentVolume;
@@ -25,16 +25,21 @@ public class MenuUtilities : MonoBehaviour
     {
         if (volumeBar != null)
         {
-            if (audioMixer.GetFloat(parameterName, out _currentVolume))
+            if (audioMixer.GetFloat(audioParameterName, out _currentVolume))
                 volumeBar.value = Mathf.InverseLerp(-60f, 10f, _currentVolume);
             volumeBar.onValueChanged.AddListener(SetVolume);
         }
     }
 
+    private void OnEnable()
+    {
+        transform.DOScale(0, startAnimationDuration).SetEase(Ease.OutBack).From();
+    }
+
     public void SetVolume(float value)
     {
         float dB = Mathf.Lerp(-60f, 10f, value);
-        audioMixer.SetFloat(parameterName, dB);
+        audioMixer.SetFloat(audioParameterName, dB);
     }
 
     public void MuteAll()

@@ -13,7 +13,7 @@ public class PressAnyButton : MonoBehaviour
 
     private void Start()
     {
-        _pulseTween = text.transform.DOScale(animationSize, animationDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.OutBack);
+        _pulseTween = text.transform.DOScale(animationSize, animationDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
     }
 
     private void Update()
