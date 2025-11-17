@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Ebac.Core.Singleton;
 
-public class AsyncLoader : MonoBehaviour
+public class AsyncLoader : Singleton<AsyncLoader>
 {
     public Slider progressBar;
     public TextMeshProUGUI percentText;
@@ -12,9 +13,21 @@ public class AsyncLoader : MonoBehaviour
 
     private AsyncOperation _operation;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene _, LoadSceneMode __)
+    {
+        progressBar = FindObjectOfType<MainMenuSlider>().slider;
+        percentText = FindObjectOfType<MainMenuPercentText>().text;
+        pressAnyKeyPanel = FindObjectOfType<MainMenuPanelAnyButton>().gameObject;
+        progressBar.gameObject.SetActive(false);
+        percentText.gameObject.SetActive(false);
+        pressAnyKeyPanel.SetActive(false);
     }
 
     public void LoadGame()

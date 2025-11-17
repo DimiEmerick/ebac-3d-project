@@ -26,7 +26,7 @@ public class PressAnyButton : MonoBehaviour
 
     private void ShowMenu()
     {
-        mainMenu.SetActive(true);
+        if (mainMenu != null) mainMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 }
