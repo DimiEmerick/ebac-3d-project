@@ -869,6 +869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_EbacPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 488577751038715042, guid: 89811f276fa0d1b4b8c22b3bd2fc5ab3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 488577751038715044, guid: 89811f276fa0d1b4b8c22b3bd2fc5ab3, type: 3}
       propertyPath: notificationText
       value: 
@@ -923,6 +927,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488577751038715045, guid: 89811f276fa0d1b4b8c22b3bd2fc5ab3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488577751038715046, guid: 89811f276fa0d1b4b8c22b3bd2fc5ab3, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 488577751038715224, guid: 89811f276fa0d1b4b8c22b3bd2fc5ab3, type: 3}
@@ -3860,7 +3868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.30352402, g: 0.8490566, b: 0.20425417, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

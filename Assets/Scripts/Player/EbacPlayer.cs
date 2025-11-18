@@ -158,7 +158,6 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
         characterController.Move(speedVector * Time.deltaTime);
     }
 
-    [NaughtyAttributes.Button]
     public void ChangeSpeed(float speed, float duration)
     {
         StartCoroutine(ChangeSpeedCoroutine(speed, duration));

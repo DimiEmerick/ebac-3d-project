@@ -22,6 +22,8 @@ public class AsyncLoader : Singleton<AsyncLoader>
 
     private void OnSceneLoaded(Scene _, LoadSceneMode __)
     {
+        Debug.Log(_);
+        Debug.Log(__);
         progressBar = FindObjectOfType<MainMenuSlider>().slider;
         percentText = FindObjectOfType<MainMenuPercentText>().text;
         pressAnyKeyPanel = FindObjectOfType<MainMenuPanelAnyButton>().gameObject;

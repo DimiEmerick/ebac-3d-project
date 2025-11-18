@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    public AsyncLoader asyncLoader;
-
     public void Load(int i)
     {
         SceneManager.LoadScene(i);
@@ -19,8 +17,8 @@ public class LoadScene : MonoBehaviour
 
     public void LoadGame()
     {
-        if (asyncLoader != null)
-            asyncLoader.LoadGame();
+        if (AsyncLoader.Instance != null)
+            AsyncLoader.Instance.LoadGame();
         else if (SaveManager.Instance.Setup != null)
             Load(SaveManager.Instance.Setup.lastLevel);
         else
