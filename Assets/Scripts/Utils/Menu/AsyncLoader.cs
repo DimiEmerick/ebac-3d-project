@@ -41,7 +41,10 @@ public class AsyncLoader : Singleton<AsyncLoader>
     {
         //  Se houver um save, carrega o próximo level
         if (SaveManager.Instance.Setup != null)
+        {
+            SaveManager.Instance.Load();
             _operation = SceneManager.LoadSceneAsync(SaveManager.Instance.lastLevel);
+        }
         //  Senão, carrega o primeiro level
         else
             _operation = SceneManager.LoadSceneAsync(1);
