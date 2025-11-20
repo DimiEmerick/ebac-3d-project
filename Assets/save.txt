@@ -6,6 +6,6 @@
     "health": 50,
     "playerName": "Dimi",
     "cloth": {
-        "instanceID": 17376
+        "instanceID": 17394
     }
 }
