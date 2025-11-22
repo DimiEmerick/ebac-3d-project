@@ -50,7 +50,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     private void Start()
     {
         Respawn();
-        if (SaveManager.Instance.Setup != null)
+        if (SaveManager.Instance != null)
         {
             healthBase.currentLife = SaveManager.Instance.Setup.health;
             healthBase.UpdateUI();

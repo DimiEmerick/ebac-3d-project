@@ -8,8 +8,8 @@ public class CheckpointBase : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
     public TextMeshProUGUI checkpointText;
-    public int key = 01;
-    public int level = 01;
+    public int key = 0;
+    public int level = 1;
 
     private bool _checkpointActive = false;
 
@@ -25,18 +25,19 @@ public class CheckpointBase : MonoBehaviour
     {
         TurnOn();
         SaveCheckpoint();
-        StartCoroutine(TextCheckpoint());
+        if (checkpointText != null) StartCoroutine(TextCheckpoint());
     }
 
     [NaughtyAttributes.Button]
-    private void TurnOff()
+    public void TurnOff()
     {
-        meshRenderer.material.SetColor("_EmissionColor", Color.gray);
+        meshRenderer?.material.DOColor(new Color32(0, 0, 0, 0), "_EmissionColor", 1f);
+        _checkpointActive = false;
     }
     [NaughtyAttributes.Button]
     private void TurnOn()
     {
-        meshRenderer.material. DOColor(new Color32(255, 255, 255, 127), "_EmissionColor", 1f);
+        meshRenderer?.material.DOColor(new Color32(255, 255, 255, 127), "_EmissionColor", 1f);
     }
 
     private void SaveCheckpoint()

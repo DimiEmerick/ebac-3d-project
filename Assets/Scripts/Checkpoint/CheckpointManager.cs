@@ -15,7 +15,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
 
     private void Start()
     {
-        if (SaveManager.Instance.Setup != null)
+        if (SaveManager.Instance != null)
             lastCheckpointKey = SaveManager.Instance.Setup.checkpoint;
     }
 
@@ -26,10 +26,9 @@ public class CheckpointManager : Singleton<CheckpointManager>
 
     public void SaveCheckpoint(int key, int level)
     {
-        if(key > lastCheckpointKey)
-        {
-            lastCheckpointKey = key;
-        }
+        var checkpoint = checkpoints.Find(i => i.key == lastCheckpointKey);
+        if (checkpoint.key != 0) checkpoint.TurnOff(); 
+        if (key > lastCheckpointKey) lastCheckpointKey = key;
         SaveManager.Instance.SaveLastLevel(key, level);
     }
 

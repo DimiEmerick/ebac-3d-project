@@ -51,8 +51,8 @@ public class AsyncLoader : Singleton<AsyncLoader>
         {
             //  Cria uma variável que guarda o valor da progressão do carregamento e converte 0.9 em 1
             float prog = Mathf.Clamp01(_operation.progress / 0.9f);
-            progressBar?.value = prog;
-            percentText?.text = Mathf.RoundToInt(prog * 100f) + "%";
+            if (progressBar != null) progressBar.value = prog;
+            if (percentText != null) percentText.text = Mathf.RoundToInt(prog * 100f) + "%";
             if (_operation.progress >= .9f)
             {
                 // Se houver prompt, aguarda o usuário, senão ativa automaticamente
