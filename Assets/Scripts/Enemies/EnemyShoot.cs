@@ -7,11 +7,30 @@ namespace Enemy
     public class EnemyShoot : EnemyBase
     {
         public GunBase gunBase;
+        public string tagToAttack;
 
-        protected override void Init()
+        private void OnTriggerEnter(Collider other)
         {
-            base.Init();
-            gunBase.StartShoot();
+            if (other.transform.CompareTag(tagToAttack))
+            {
+                gunBase.StartShoot();
+                PlayAnimationByTrigger(Animation.AnimationType.ATTACK);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.transform.CompareTag(tagToAttack))
+            {
+                gunBase.StopShoot();
+                PlayAnimationByTrigger(Animation.AnimationType.IDLE);
+            }
+        }
+
+        protected override void OnKill()
+        {
+            base.OnKill();
+            gunBase.StopShoot();
         }
     }
 }

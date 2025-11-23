@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
@@ -21,13 +20,13 @@ public class CheckpointManager : Singleton<CheckpointManager>
 
     public bool HasCheckpoint()
     {
-        return lastCheckpointKey > 0;
+        return lastCheckpointKey > -1;
     }
 
     public void SaveCheckpoint(int key, int level)
     {
         var checkpoint = checkpoints.Find(i => i.key == lastCheckpointKey);
-        if (checkpoint.key != 0) checkpoint.TurnOff(); 
+        if (checkpoint.key >= 0 ) checkpoint.TurnOff(); 
         if (key > lastCheckpointKey) lastCheckpointKey = key;
         SaveManager.Instance.SaveLastLevel(key, level);
     }

@@ -31,6 +31,7 @@ public class EbacPlayer : Singleton<EbacPlayer> //, IDamageable
     public List<UIFillUpdater> uiGunUpdaters;
 
     private float _vSpeed = 0f;
+    private float _currentSpeed = 0f;
     private bool _alive = true;
     private bool _jumping = false;
 

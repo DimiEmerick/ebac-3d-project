@@ -393,10 +393,11 @@ MonoBehaviour:
   healthBase: {fileID: 3724512673846498648}
   player: {fileID: 0}
   flashColor: {fileID: 5657791638283182020}
+  bossTrigger: {fileID: 0}
   animationBase: {fileID: 1388571648313088388}
   startAnimationDuration: 0.5
   startAnimationEase: 27
-  speed: 5
+  speed: 7
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -416,9 +417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d64404fd4ed534c9c9d9f46d8c6805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiFillUpdaters: []
   startLife: 50
+  damageMultiplier: 1
   destroyOnKill: 1
-  _currentLife: 0
+  currentLife: 0
 --- !u!114 &1388571648313088388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,6 +951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 8572558984898700101}
   skinnedMeshRenderer: {fileID: 0}
+  colorParameter: _EmissionColor
   color: {r: 1, g: 1, b: 1, a: 1}
   duration: 0.1
 --- !u!1 &8505842906065278279
